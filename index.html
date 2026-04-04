@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="w3-top">
+      <div class="w3-bar" id="myNavbar">
+        <a
+          class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+          href="javascript:void(0);"
+          onclick="toggleFunction()"
+          title="Toggle Navigation Menu"
+        >
+          <i class="fa fa-bars"></i>
+        </a>
+        <a href="#home" class="w3-bar-item w3-button">home</a>
+        <a href="#about" class="w3-bar-item w3-button w3-hide-small"
+          ><i class="fa fa-user"></i> about</a
+        >
+        <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"
+          ><i class="fa fa-th"></i> portfolio</a
+        >
+        <a href="#contact" class="w3-bar-item w3-button w3-hide-small"
+          ><i class="fa fa-envelope"></i> contact</a
+        >
+        <a
+          href="#"
+          class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red"
+        >
+          <i class="fa fa-search"></i>
+        </a>
+      </div>
+
+      <div
+        id="navDemo"
+        class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium"
+      >
+        <a
+          href="#about"
+          class="w3-bar-item w3-button"
+          onclick="toggleFunction()"
+          >ABOUT</a
+        >
+        <a
+          href="#portfolio"
+          class="w3-bar-item w3-button"
+          onclick="toggleFunction()"
+          >PORTFOLIO</a
+        >
+        <a
+          href="#contact"
+          class="w3-bar-item w3-button"
+          onclick="toggleFunction()"
+          >CONTACT</a
+        >
+      </div>
+    </div>
+
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+      <div class="w3-display-middle" style="white-space: nowrap">
+        <span
+          class="w3-center w3-padding-large w3-light-grey w3-xlarge w3-wide w3-animate-opacity"
+          >the way we walk</span
+        >
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64" id="about">
+      <div class="w3-center">
+        <h3 class="w3-center">welcome</h3>
+        <p>
+          What I have to offer is a long walk. I see this life as a long walk.
+          And the only way it has ever made sense to me has been to walk with
+          the trees and the mountains and the oceans and the birds and each
+          other.
+        </p>
+        <p>
+          This is what I would like to give: I would like to share the space,
+          the opportunity and the structure to walk with the more-than-human
+          beings of this Earth. I would like to teach all that I can around
+          feeling more at home with this Earth and thus more at home with
+          ourselves.
+        </p>
+      </div>
+    </div>
+
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">about me</span>
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64" id="portfolio">
+      <div class="w3-row">
+        <div class="w3-col m6 w3-center w3-padding-large">
+          <img
+            src="images/avalon.jpg"
+            class="w3-round w3-image"
+            alt="Photo of Me"
+            width="500"
+            height="333"
+          />
+          <br />
+          <p>
+            <em></i>Avalon Qian</em>
+          </p>
+        </div>
+        <div class="w3-col m6 w3-hide-small w3-padding-large">
+          <p>
+            I have been working in the outdoor industry since 2013 and it has
+            been primarily in outdoor education. I have led and instructed
+            people in the mountains of California, Wyoming, Alaska and many
+            other places. My work recently culminated in me giving myself a
+            month long solo journey in the Grand Canyon. I wish to share my work
+            with all who are interested. I am a certified Wilderness First
+            Responder. This is a certification received after taking an 80 hour
+            course that teaches how to respond to emergency medical situations
+            in remote settings.
+          </p>
+
+          <p>
+            I believe in the work of standing with ourselves, feeling the Earth under
+            our feet and breathing. That’s it. I believe in slowing down so we can
+            hear ourselves and the birds. I think the Earth wants to be listened to
+            and I hope we can be a part of this healing.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bgimg-3 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">contact</span>
+      </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64" id="contact">
+      <div class="w3-row w3-padding-32 w3-section">
+        <div class="w3-col m8 w3-panel">
+          <div class="w3-large w3-margin-bottom">
+            <i
+              class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"
+            ></i>
+            email: avalonqian@gmail.com<br />
+          </div>
+          <form action="/action_page.php" target="_blank">
+            <input
+              class="w3-input w3-border"
+              type="text"
+              placeholder="name"
+              required
+              name="name"
+            />
+            <input
+              class="w3-input w3-border w3-section"
+              type="text"
+              placeholder="email"
+              required
+              name="email"
+            />
+            <button class="w3-button w3-black w3-right" type="submit">
+              <i class="fa fa-paper-plane"></i> send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off"
+    >
+      <a href="#home" class="w3-button w3-light-grey"
+        ><i class="fa fa-arrow-up w3-margin-right"></i>to the top</a
+      >
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
