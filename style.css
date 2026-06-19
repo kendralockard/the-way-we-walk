@@ -23,7 +23,8 @@ html {
 /* Parallax Settings */
 .bgimg-1,
 .bgimg-2,
-.bgimg-3 {
+.bgimg-3,
+.bgimg-4 {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,6 +44,11 @@ html {
 
 .bgimg-3 {
   background-image: url("images/img3.jpg");
+  min-height: 400px;
+}
+
+.bgimg-4 {
+  background-image: url("images/img4.jpg");
   min-height: 400px;
 }
 
