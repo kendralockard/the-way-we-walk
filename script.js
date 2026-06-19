@@ -1,20 +1,3 @@
-// Contact form: open the visitor's email client addressed to Avalon
-function sendMessage(event) {
-  event.preventDefault();
-  var form = event.target;
-  var name = encodeURIComponent(form.name.value);
-  var email = encodeURIComponent(form.email.value);
-  var message = encodeURIComponent(form.message.value);
-  var subject = "Website inquiry from " + name;
-  var body = message + "%0D%0A%0D%0AFrom: " + name + " (" + email + ")";
-  window.location.href =
-    "mailto:avalonqian@gmail.com?subject=" +
-    encodeURIComponent(subject) +
-    "&body=" +
-    body;
-  return false;
-}
-
 // Change style of navbar on scroll
 window.onscroll = function () {
   myFunction();

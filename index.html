@@ -225,7 +225,18 @@
             ></i>
             email: avalonqian@gmail.com<br />
           </div>
-          <form id="contactForm" onsubmit="return sendMessage(event);">
+          <form
+            id="contactForm"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thank-you.html"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
             <input
               class="w3-input w3-border"
               type="text"
