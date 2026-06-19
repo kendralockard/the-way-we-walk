@@ -59,6 +59,16 @@ html {
   cursor: pointer;
 }
 
+/* Vertically center the photo and text columns in the about & land sections.
+   Only applies at the W3.CSS medium breakpoint (>=601px), where the columns
+   sit side by side; below that they stack normally. */
+@media (min-width: 601px) {
+  .vcenter-row {
+    display: flex;
+    align-items: center;
+  }
+}
+
 /* Responsive: Turn off parallax for mobile/tablets only.
    (Was max-device-width: 1600px, which disabled parallax on virtually
    every laptop/desktop, so the effect never showed.) */
