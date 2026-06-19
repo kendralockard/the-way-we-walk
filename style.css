@@ -53,8 +53,10 @@ html {
   cursor: pointer;
 }
 
-/* Responsive: Turn off parallax for mobile/tablets */
-@media only screen and (max-device-width: 1600px) {
+/* Responsive: Turn off parallax for mobile/tablets only.
+   (Was max-device-width: 1600px, which disabled parallax on virtually
+   every laptop/desktop, so the effect never showed.) */
+@media only screen and (max-width: 768px) {
   .bgimg-1,
   .bgimg-2,
   .bgimg-3 {
