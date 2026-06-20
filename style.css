@@ -14,8 +14,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: "Times New Roman";
+h6,
+input,
+select,
+textarea,
+button,
+.w3-button {
+  font-family: "EB Garamond", serif;
 }
 
 body,
@@ -23,6 +28,13 @@ html {
   height: 100%;
   color: #777;
   line-height: 1.8;
+}
+
+/* EB Garamond runs a little small, so bump the base text size everywhere.
+   Set on body (not html) so rem units stay anchored to 16px. Headings keep
+   their own fixed sizes from W3.CSS, so they're unaffected. */
+body {
+  font-size: 1.1rem;
 }
 
 /* Parallax Settings */
