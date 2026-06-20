@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Offerings — The Way We Walk</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar: links point back to the home page sections (index.html#...) -->
+    <div class="w3-top">
+      <div class="w3-bar" id="myNavbar">
+        <a
+          class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
+          href="javascript:void(0);"
+          onclick="toggleFunction()"
+          title="Toggle Navigation Menu"
+        >
+          <i class="fa fa-bars"></i>
+        </a>
+        <a href="index.html#home" class="w3-bar-item w3-button w3-hide-small"
+          >home</a
+        >
+        <a href="index.html#about" class="w3-bar-item w3-button w3-hide-small"
+          ><i class="fa fa-user"></i> about</a
+        >
+        <a href="offerings.html" class="w3-bar-item w3-button w3-hide-small"
+          ><i class="fa fa-map-o"></i> offerings</a
+        >
+        <a href="index.html#contact" class="w3-bar-item w3-button w3-hide-small"
+          ><i class="fa fa-envelope"></i> contact</a
+        >
+      </div>
+
+      <div
+        id="navDemo"
+        class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium"
+      >
+        <a href="index.html#home" class="w3-bar-item w3-button">home</a>
+        <a href="index.html#about" class="w3-bar-item w3-button">about</a>
+        <a href="offerings.html" class="w3-bar-item w3-button">offerings</a>
+        <a href="index.html#contact" class="w3-bar-item w3-button">contact</a>
+      </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+      <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">offerings</span>
+      </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="w3-content w3-container w3-padding-64" id="offerings">
+      <div class="w3-center">
+        <h3 class="w3-center">current offerings</h3>
+        <p>
+          [ Placeholder intro — a sentence or two about the trips below and how
+          the sign-up works. ]
+        </p>
+      </div>
+
+      <!-- Trip cards. Duplicate a column block to add more trips. -->
+      <div class="w3-row-padding w3-padding-32">
+        <!-- Trip 1 -->
+        <div class="w3-col m4 w3-margin-bottom">
+          <div class="w3-card w3-round w3-white">
+            <!-- Replace this placeholder with a photo:
+              <img src="images/trip1.jpg" class="w3-image" style="width:100%" alt="Trip name" />
+            -->
+            <div
+              class="w3-light-grey w3-center"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 200px;
+              "
+            >
+              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
+            </div>
+            <div class="w3-container w3-padding-16">
+              <h4>[ Trip name ]</h4>
+              <p class="w3-text-grey">
+                <i class="fa fa-calendar w3-margin-right"></i>[ dates ]<br />
+                <i class="fa fa-map-marker w3-margin-right"></i>[ location ]
+              </p>
+              <p>[ A short description of the trip. ]</p>
+              <a href="#signup" class="w3-button w3-black w3-round w3-small"
+                >request a spot &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 2 -->
+        <div class="w3-col m4 w3-margin-bottom">
+          <div class="w3-card w3-round w3-white">
+            <div
+              class="w3-light-grey w3-center"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 200px;
+              "
+            >
+              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
+            </div>
+            <div class="w3-container w3-padding-16">
+              <h4>[ Trip name ]</h4>
+              <p class="w3-text-grey">
+                <i class="fa fa-calendar w3-margin-right"></i>[ dates ]<br />
+                <i class="fa fa-map-marker w3-margin-right"></i>[ location ]
+              </p>
+              <p>[ A short description of the trip. ]</p>
+              <a href="#signup" class="w3-button w3-black w3-round w3-small"
+                >request a spot &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip 3 -->
+        <div class="w3-col m4 w3-margin-bottom">
+          <div class="w3-card w3-round w3-white">
+            <div
+              class="w3-light-grey w3-center"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 200px;
+              "
+            >
+              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
+            </div>
+            <div class="w3-container w3-padding-16">
+              <h4>[ Trip name ]</h4>
+              <p class="w3-text-grey">
+                <i class="fa fa-calendar w3-margin-right"></i>[ dates ]<br />
+                <i class="fa fa-map-marker w3-margin-right"></i>[ location ]
+              </p>
+              <p>[ A short description of the trip. ]</p>
+              <a href="#signup" class="w3-button w3-black w3-round w3-small"
+                >request a spot &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign-up form (delivered via Netlify, like the contact form) -->
+    <div class="w3-content w3-container w3-padding-64" id="signup">
+      <div class="w3-center">
+        <h3 class="w3-center">sign up</h3>
+        <p>
+          Interested in joining a trip? Send your details and we'll be in touch.
+        </p>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col l8 m10" style="margin: 0 auto; float: none">
+          <form
+            id="signupForm"
+            name="trip-signup"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thank-you.html"
+          >
+            <input type="hidden" name="form-name" value="trip-signup" />
+            <p hidden>
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            <input
+              class="w3-input w3-border"
+              type="text"
+              placeholder="name"
+              required
+              name="name"
+            />
+            <input
+              class="w3-input w3-border w3-section"
+              type="email"
+              placeholder="email"
+              required
+              name="email"
+            />
+            <select class="w3-select w3-border w3-section" name="trip" required>
+              <option value="" disabled selected>which trip?</option>
+              <option>[ Trip name ]</option>
+              <option>[ Trip name ]</option>
+              <option>[ Trip name ]</option>
+              <option>not sure yet / general interest</option>
+            </select>
+            <textarea
+              class="w3-input w3-border w3-section"
+              placeholder="anything you'd like us to know"
+              name="message"
+              rows="4"
+            ></textarea>
+            <button class="w3-button w3-black w3-right w3-section" type="submit">
+              <i class="fa fa-paper-plane"></i> send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off"
+    >
+      <a href="index.html" class="w3-button w3-light-grey"
+        ><i class="fa fa-arrow-left w3-margin-right"></i>back home</a
+      >
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
