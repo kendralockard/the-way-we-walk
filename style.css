@@ -75,7 +75,20 @@ html {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
-/* "see current offerings" button: white with a black outline, bold italic. */
+/* All buttons fade gently on hover. W3.CSS already turns buttons a light grey
+   (#ccc) on hover; this just makes the change gradual (0.5s) instead of instant. */
+.w3-button {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+/* A slightly lighter grey than W3.CSS's default #ccc on hover. */
+.w3-button:hover {
+  background-color: #e0e0e0d7 !important;
+}
+
+/* "see current offerings" button: white with a black outline, bold italic.
+   Inverts to a black background on hover. */
 .offerings-btn {
   background-color: #fff;
   border: 2px solid #000;
