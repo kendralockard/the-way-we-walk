@@ -1,6 +1,11 @@
 /* General Styles */
 html {
   scroll-behavior: smooth;
+  /* Guard against horizontal scrolling. Applied to <html>, NOT <body>: putting
+     it on the (100%-height) body turns the body into its own scroll container,
+     which stops window scroll events from firing and breaks the
+     navbar-on-scroll color change and the mobile parallax. */
+  overflow-x: hidden;
 }
 
 body,
@@ -18,8 +23,6 @@ html {
   height: 100%;
   color: #777;
   line-height: 1.8;
-  /* Guard against accidental horizontal scrolling on small screens. */
-  overflow-x: hidden;
 }
 
 /* Parallax Settings */
