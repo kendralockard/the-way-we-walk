@@ -69,6 +69,19 @@ html {
   background-color: rgba(255, 255, 255, 0.92);
 }
 
+/* "see current offerings" button: white with a black outline, bold italic. */
+.offerings-btn {
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+.offerings-btn:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
 /* Vertically center the photo and text columns in the about & land sections.
    Only applies at the W3.CSS medium breakpoint (>=601px), where the columns
    sit side by side; below that they stack normally. */
