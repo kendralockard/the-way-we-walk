@@ -29,7 +29,8 @@ html {
 .bgimg-1,
 .bgimg-2,
 .bgimg-3,
-.bgimg-4 {
+.bgimg-4,
+.bgimg-5 {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,6 +55,11 @@ html {
 
 .bgimg-4 {
   background-image: url("images/img4.jpg");
+  min-height: 400px;
+}
+
+.bgimg-5 {
+  background-image: url("images/img5.jpg");
   min-height: 400px;
 }
 
@@ -101,7 +107,8 @@ html {
   .bgimg-1,
   .bgimg-2,
   .bgimg-3,
-  .bgimg-4 {
+  .bgimg-4,
+  .bgimg-5 {
     background-attachment: scroll;
     min-height: 400px;
   }
