@@ -80,12 +80,52 @@ html {
    (Was max-device-width: 1600px, which disabled parallax on virtually
    every laptop/desktop, so the effect never showed.) */
 @media only screen and (max-width: 768px) {
+  /* Mobile parallax. `background-attachment: fixed` is unsupported on mobile,
+     so instead we render each section's photo in a ::before layer that is
+     taller than the section (130% height, pulled up 15%). script.js slides
+     that layer via the --py variable as the section scrolls through view.
+     Because the layer uses `cover` and has 15% of overhang on each side, the
+     movement never exposes a gap, whatever the photo's aspect ratio. */
   .bgimg-1,
   .bgimg-2,
   .bgimg-3,
   .bgimg-4 {
-    background-attachment: scroll;
+    position: relative;
+    z-index: 0; /* own stacking context so ::before can sit behind content */
+    overflow: hidden;
     min-height: 400px;
+    background-image: none; /* the photo moves to the ::before layer */
+  }
+
+  .bgimg-1::before,
+  .bgimg-2::before,
+  .bgimg-3::before,
+  .bgimg-4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -15%;
+    height: 130%;
+    z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateY(var(--py, 0px));
+    will-change: transform;
+  }
+
+  .bgimg-1::before {
+    background-image: url("images/img1.jpg");
+  }
+  .bgimg-2::before {
+    background-image: url("images/img2.jpg");
+  }
+  .bgimg-3::before {
+    background-image: url("images/img3.jpg");
+  }
+  .bgimg-4::before {
+    background-image: url("images/img4.jpg");
   }
 
   /* The 10px tracking overflows narrow screens; tighten it on mobile. */

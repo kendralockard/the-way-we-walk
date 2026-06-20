@@ -29,27 +29,32 @@ function toggleFunction() {
 
 // Mobile parallax.
 // Desktop uses CSS `background-attachment: fixed`, which mobile browsers
-// (iOS especially) don't support. So on small screens we fake it in JS by
-// nudging each background's vertical position as it scrolls through the
-// viewport. Percentage positioning with `background-size: cover` means the
-// image always stays covered — no gaps are ever revealed.
+// (iOS especially) don't support. So on small screens (see the matching
+// @media block in style.css) each section's photo lives in a ::before layer
+// that is 15% taller than the section on each side. Here we translate that
+// layer via the --py custom property as the section scrolls through view —
+// the overhang means the slide never exposes a gap.
 (function () {
   var mq = window.matchMedia("(max-width: 768px)");
-  var layers = document.querySelectorAll(".bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4");
+  var layers = document.querySelectorAll(
+    ".bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4",
+  );
   var ticking = false;
 
   function render() {
     ticking = false;
+    if (!mq.matches) return; // desktop keeps the native CSS parallax
     var winH = window.innerHeight;
     for (var i = 0; i < layers.length; i++) {
       var el = layers[i];
       var rect = el.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > winH) continue; // off-screen, skip
       // progress: ~0 as the section enters from the bottom, ~1 as it leaves
-      // the top. Map that to a 30%–70% vertical background position.
+      // the top. At the midpoint the layer is centered (no shift); at the
+      // extremes it slides up to 15% of the section height (the CSS overhang).
       var progress = (winH - rect.top) / (winH + rect.height);
-      var pos = 50 + (progress - 0.5) * 40;
-      el.style.backgroundPositionY = pos + "%";
+      var ty = (0.5 - progress) * 2 * (rect.height * 0.15);
+      el.style.setProperty("--py", ty.toFixed(1) + "px");
     }
   }
 
@@ -62,16 +67,13 @@ function toggleFunction() {
 
   function clear() {
     for (var i = 0; i < layers.length; i++) {
-      layers[i].style.backgroundPositionY = "";
+      layers[i].style.removeProperty("--py");
     }
   }
 
   function sync() {
-    if (mq.matches) {
-      render();
-    } else {
-      clear(); // hand control back to the CSS fixed parallax on desktop
-    }
+    if (mq.matches) render();
+    else clear();
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
