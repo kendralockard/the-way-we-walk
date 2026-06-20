@@ -18,6 +18,8 @@ html {
   height: 100%;
   color: #777;
   line-height: 1.8;
+  /* Guard against accidental horizontal scrolling on small screens. */
+  overflow-x: hidden;
 }
 
 /* Parallax Settings */
@@ -75,8 +77,14 @@ html {
 @media only screen and (max-width: 768px) {
   .bgimg-1,
   .bgimg-2,
-  .bgimg-3 {
+  .bgimg-3,
+  .bgimg-4 {
     background-attachment: scroll;
     min-height: 400px;
+  }
+
+  /* The 10px tracking overflows narrow screens; tighten it on mobile. */
+  .w3-wide {
+    letter-spacing: 3px;
   }
 }
