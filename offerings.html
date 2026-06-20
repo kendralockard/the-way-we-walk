@@ -69,95 +69,10 @@
         </p>
       </div>
 
-      <!-- Trip cards. Duplicate a column block to add more trips. -->
-      <div class="w3-row-padding w3-padding-32">
-        <!-- Trip 1 -->
-        <div class="w3-col m4 w3-margin-bottom">
-          <div class="w3-card w3-round w3-white">
-            <!-- Replace this placeholder with a photo:
-              <img src="images/trip1.jpg" class="w3-image" style="width:100%" alt="Trip name" />
-            -->
-            <div
-              class="w3-light-grey w3-center"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 200px;
-              "
-            >
-              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
-            </div>
-            <div class="w3-container w3-padding-16">
-              <h4>[ Trip name ]</h4>
-              <p class="w3-text-grey">
-                <i class="fa fa-calendar w3-margin-right"></i>[ dates ]<br />
-                <i class="fa fa-map-marker w3-margin-right"></i>[ location ]
-              </p>
-              <p>[ A short description of the trip. ]</p>
-              <a href="#signup" class="w3-button w3-black w3-round w3-small"
-                >request a spot &rarr;</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Trip 2 -->
-        <div class="w3-col m4 w3-margin-bottom">
-          <div class="w3-card w3-round w3-white">
-            <div
-              class="w3-light-grey w3-center"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 200px;
-              "
-            >
-              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
-            </div>
-            <div class="w3-container w3-padding-16">
-              <h4>[ Trip name ]</h4>
-              <p class="w3-text-grey">
-                <i class="fa fa-calendar w3-margin-right"></i>[ dates ]<br />
-                <i class="fa fa-map-marker w3-margin-right"></i>[ location ]
-              </p>
-              <p>[ A short description of the trip. ]</p>
-              <a href="#signup" class="w3-button w3-black w3-round w3-small"
-                >request a spot &rarr;</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Trip 3 -->
-        <div class="w3-col m4 w3-margin-bottom">
-          <div class="w3-card w3-round w3-white">
-            <div
-              class="w3-light-grey w3-center"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 200px;
-              "
-            >
-              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
-            </div>
-            <div class="w3-container w3-padding-16">
-              <h4>[ Trip name ]</h4>
-              <p class="w3-text-grey">
-                <i class="fa fa-calendar w3-margin-right"></i>[ dates ]<br />
-                <i class="fa fa-map-marker w3-margin-right"></i>[ location ]
-              </p>
-              <p>[ A short description of the trip. ]</p>
-              <a href="#signup" class="w3-button w3-black w3-round w3-small"
-                >request a spot &rarr;</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Trip cards are rendered by the script at the bottom of this page,
+           from the `trips` array. To add/edit/remove a trip, edit that one
+           list — you don't need to touch the markup here. -->
+      <div class="w3-row-padding w3-padding-32" id="trip-cards"></div>
     </div>
 
     <!-- Sign-up form (delivered via Netlify, like the contact form) -->
@@ -196,12 +111,15 @@
               required
               name="email"
             />
-            <select class="w3-select w3-border w3-section" name="trip" required>
+            <!-- Trip options are filled in by the script below (same `trips`
+                 list). Clicking a card's "request a spot" pre-selects it. -->
+            <select
+              class="w3-select w3-border w3-section"
+              name="trip"
+              id="trip-select"
+              required
+            >
               <option value="" disabled selected>which trip?</option>
-              <option>[ Trip name ]</option>
-              <option>[ Trip name ]</option>
-              <option>[ Trip name ]</option>
-              <option>not sure yet / general interest</option>
             </select>
             <textarea
               class="w3-input w3-border w3-section"
@@ -229,5 +147,100 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      // ---------------------------------------------------------------------
+      // EDIT YOUR TRIPS HERE. Add, remove, or change entries in this one list
+      // and both the cards above and the sign-up dropdown update automatically.
+      // `image` is optional — leave it as "" to show the grey placeholder.
+      // ---------------------------------------------------------------------
+      var trips = [
+        {
+          name: "[ Trip 1 name ]",
+          dates: "[ dates ]",
+          location: "[ location ]",
+          description: "[ A short description of the trip. ]",
+          image: "", // e.g. "images/trip1.jpg"
+        },
+        {
+          name: "[ Trip 2 name ]",
+          dates: "[ dates ]",
+          location: "[ location ]",
+          description: "[ A short description of the trip. ]",
+          image: "",
+        },
+        {
+          name: "[ Trip 3 name ]",
+          dates: "[ dates ]",
+          location: "[ location ]",
+          description: "[ A short description of the trip. ]",
+          image: "",
+        },
+      ];
+
+      (function () {
+        var cards = document.getElementById("trip-cards");
+        var select = document.getElementById("trip-select");
+
+        // Escape any characters that would break the HTML/attribute strings.
+        function esc(s) {
+          return String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        trips.forEach(function (trip) {
+          var media = trip.image
+            ? '<img src="' +
+              esc(trip.image) +
+              '" class="w3-image" style="width:100%" alt="' +
+              esc(trip.name) +
+              '" />'
+            : '<div class="w3-light-grey w3-center" style="display:flex;align-items:center;justify-content:center;min-height:200px;">' +
+              '<i class="fa fa-picture-o w3-jumbo w3-text-grey"></i></div>';
+
+          var col = document.createElement("div");
+          col.className = "w3-col m4 w3-margin-bottom";
+          col.innerHTML =
+            '<div class="w3-card w3-round w3-white">' +
+            media +
+            '<div class="w3-container w3-padding-16">' +
+            "<h4>" +
+            esc(trip.name) +
+            "</h4>" +
+            '<p class="w3-text-grey">' +
+            '<i class="fa fa-calendar w3-margin-right"></i>' +
+            esc(trip.dates) +
+            "<br />" +
+            '<i class="fa fa-map-marker w3-margin-right"></i>' +
+            esc(trip.location) +
+            "</p>" +
+            "<p>" +
+            esc(trip.description) +
+            "</p>" +
+            '<a href="#signup" class="w3-button w3-black w3-round w3-small" data-trip="' +
+            esc(trip.name) +
+            '">request a spot &rarr;</a>' +
+            "</div></div>";
+          cards.appendChild(col);
+
+          var opt = document.createElement("option");
+          opt.textContent = trip.name;
+          select.appendChild(opt);
+        });
+
+        // A catch-all option after the specific trips.
+        var general = document.createElement("option");
+        general.textContent = "not sure yet / general interest";
+        select.appendChild(general);
+
+        // Clicking a card's "request a spot" pre-selects that trip in the form.
+        cards.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-trip]");
+          if (btn) select.value = btn.getAttribute("data-trip");
+        });
+      })();
+    </script>
   </body>
 </html>
