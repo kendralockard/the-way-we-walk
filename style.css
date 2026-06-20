@@ -61,6 +61,11 @@ html {
   cursor: pointer;
 }
 
+/* Inspiration text card sits over the parallax canyon photo. */
+.inspiration-card {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
 /* Vertically center the photo and text columns in the about & land sections.
    Only applies at the W3.CSS medium breakpoint (>=601px), where the columns
    sit side by side; below that they stack normally. */
@@ -86,5 +91,12 @@ html {
   /* The 10px tracking overflows narrow screens; tighten it on mobile. */
   .w3-wide {
     letter-spacing: 3px;
+  }
+
+  /* On phones the card filled the screen and hid the canyon. Make it more
+     transparent and let the photo show as a frame around it. */
+  .inspiration-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 88% !important;
   }
 }
