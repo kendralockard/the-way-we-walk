@@ -16,55 +16,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="w3-top">
-      <div class="w3-bar" id="myNavbar">
-        <a
-          class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
-          href="javascript:void(0);"
-          onclick="toggleFunction()"
-          title="Toggle Navigation Menu"
-        >
-          <i class="fa fa-bars"></i>
-        </a>
-        <a href="#home" class="w3-bar-item w3-button w3-hide-small">home</a>
-        <a href="offerings.html" class="w3-bar-item w3-button w3-hide-small"
-          ><i class="fa fa-map-o"></i> offerings</a
-        >
-        <a href="#about" class="w3-bar-item w3-button w3-hide-small"
-          ><i class="fa fa-user"></i> about</a
-        >
-        <a href="#contact" class="w3-bar-item w3-button w3-hide-small"
-          ><i class="fa fa-envelope"></i> contact</a
-        >
-      </div>
-
-      <div
-        id="navDemo"
-        class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium"
-      >
-        <a href="#home" class="w3-bar-item w3-button" onclick="toggleFunction()"
-          >home</a
-        >
-        <a
-          href="#about"
-          class="w3-bar-item w3-button"
-          onclick="toggleFunction()"
-          >about</a
-        >
-        <a
-          href="offerings.html"
-          class="w3-bar-item w3-button"
-          onclick="toggleFunction()"
-          >offerings</a
-        >
-        <a
-          href="#contact"
-          class="w3-bar-item w3-button"
-          onclick="toggleFunction()"
-          >contact</a
-        >
-      </div>
-    </div>
+    <!-- Navbar is injected by navbar.js (shared across pages). -->
+    <div class="w3-top" id="site-nav"></div>
+    <script src="navbar.js"></script>
 
     <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
       <div class="w3-display-middle" style="white-space: nowrap">
