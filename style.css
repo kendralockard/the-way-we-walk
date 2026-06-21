@@ -138,6 +138,21 @@ body {
   justify-content: center;
 }
 
+.trip-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center 45%;
+  border-radius: 4px 4px 0 0;
+}
+
+.trip-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
 /* Responsive: Turn off parallax for mobile/tablets only.
    (Was max-device-width: 1600px, which disabled parallax on virtually
    every laptop/desktop, so the effect never showed.) */
