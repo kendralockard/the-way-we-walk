@@ -213,13 +213,31 @@ body {
 @media only screen and (max-width: 768px) {
   /* Mobile browsers don't support fixed-attachment parallax, so the
      backgrounds simply scroll normally here. */
-  .bgimg-1,
-  .bgimg-2,
-  .bgimg-3,
-  .bgimg-4,
-  .bgimg-5 {
+  .bgimg-hero,
+  .bgimg-about,
+  .bgimg-inspiration,
+  .bgimg-contact,
+  .bgimg-offerings {
     background-attachment: scroll;
     min-height: 400px;
+  }
+
+  /* Per-image position tuning for mobile: show the interesting part
+     of each photo in the narrow horizontal strip. */
+  .bgimg-hero {
+    background-position: center 65%;
+  }
+  .bgimg-about {
+    background-position: center 35%;
+  }
+  .bgimg-inspiration {
+    background-position: center 60%;
+  }
+  .bgimg-contact {
+    background-position: center 50%;
+  }
+  .bgimg-offerings {
+    background-position: center 55%;
   }
 
   /* The 10px tracking overflows narrow screens; tighten it on mobile. */
