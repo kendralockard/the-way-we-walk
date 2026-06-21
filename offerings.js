@@ -6,11 +6,12 @@
 // ---------------------------------------------------------------------------
 var trips = [
   {
-    name: "Mini Trip for young ones",
-    dates: "[ dates ]",
-    location: "[ location ]",
-    description: "[ A short description of the trip. ]",
-    image: "", // e.g. "images/trip1.jpg"
+    name: "Mini Trip for young ones (ages 5-10)",
+    dates: "June 29 - July 3",
+    location: "surrounding Bay Area",
+    description:
+      "A week full of day trips exploring the Bay Area.  Offered to young ones aged 5 to 10.",
+    image: "images/mini-trip-for-kids.jpeg",
   },
 ];
 
@@ -32,7 +33,7 @@ var trips = [
     var media = trip.image
       ? '<img src="' +
         esc(trip.image) +
-        '" class="w3-image" style="width:100%" alt="' +
+        '" class="w3-image" style="width:100%;height:200px;object-fit:cover;object-position:center 45%;border-radius:4px 4px 0 0;" alt="' +
         esc(trip.name) +
         '" />'
       : '<div class="w3-light-grey w3-center" style="display:flex;align-items:center;justify-content:center;min-height:200px;">' +
@@ -59,7 +60,7 @@ var trips = [
       "</p>" +
       '<a href="#signup" class="w3-button w3-black w3-round w3-medium" data-trip="' +
       esc(trip.name) +
-      '">see details &rarr;</a>' +
+      '">see more &rarr;</a>' +
       "</div></div>";
     cards.appendChild(col);
 

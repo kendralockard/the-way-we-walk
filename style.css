@@ -131,6 +131,13 @@ body {
   }
 }
 
+/* Center trip cards so a single card (or any odd count) doesn't sit left-aligned. */
+#trip-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* Responsive: Turn off parallax for mobile/tablets only.
    (Was max-device-width: 1600px, which disabled parallax on virtually
    every laptop/desktop, so the effect never showed.) */
