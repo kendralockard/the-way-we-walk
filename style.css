@@ -91,6 +91,17 @@ body {
   cursor: pointer;
 }
 
+/* Sign-up form styles. */
+#signup label strong {
+  font-weight: 600;
+}
+#signup .w3-section {
+  margin-top: 4px !important;
+}
+.signup-intro {
+  line-height: 1.5;
+}
+
 /* Background tint for trip page headers. */
 .trip-header {
   background-color: #f7f5f2;
