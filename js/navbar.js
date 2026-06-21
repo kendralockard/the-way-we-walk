@@ -3,15 +3,17 @@
 //
 // To change nav links, edit the `links` array below.
 (function () {
-  // Section links (#home/#about/#contact) live on the home page, so prefix them
-  // with index.html when we're on any other page.
+  // Build a relative prefix back to the site root from the current page's directory.
+  var dirs = location.pathname.replace(/\/[^/]*$/, "").split("/").filter(Boolean);
+  var prefix = "../".repeat(dirs.length);
+
   var page = location.pathname.split("/").pop();
   var onIndex = page === "" || page === "index.html";
-  var home = onIndex ? "" : "index.html";
+  var home = onIndex ? "" : prefix + "index.html";
 
   var links = [
     { label: "home", href: home + "#home" },
-    { label: "offerings", href: "offerings.html" },
+    { label: "offerings", href: prefix + "offerings.html" },
     { label: "about", href: home + "#about" },
     { label: "contact", href: home + "#contact" },
   ];
