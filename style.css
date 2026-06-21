@@ -180,8 +180,15 @@ body {
   object-fit: cover;
 }
 @media (max-width: 600px) {
+  .trip-what-row {
+    flex-direction: column;
+  }
   .trip-what-photo {
-    display: none;
+    order: -1;
+    height: 260px;
+  }
+  .trip-what-photo img {
+    object-position: center 65%;
   }
 }
 
