@@ -3,7 +3,7 @@
 // the cards on the offerings page update automatically.
 // `image` is optional — leave it as "" to show the grey placeholder.
 // `detail` is optional — a second line shown below the name on the card.
-// `page` is the filename of the trip's detail page.
+// `page` is the path to the trip's detail page, relative to the site root.
 // ---------------------------------------------------------------------------
 var trips = [
   {
@@ -14,7 +14,7 @@ var trips = [
     description:
       "A week full of day trips exploring the Bay Area.  Offered to young ones aged 5 to 10.",
     image: "images/mini-trip-for-kids.jpeg",
-    page: "mini-trip.html",
+    page: "trips/mini-trip.html",
   },
 ];
 
