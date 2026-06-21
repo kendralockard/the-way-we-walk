@@ -146,6 +146,13 @@ body {
   border-radius: 4px 4px 0 0;
 }
 
+.trip-detail {
+  display: block;
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #999;
+}
+
 .trip-card-placeholder {
   display: flex;
   align-items: center;

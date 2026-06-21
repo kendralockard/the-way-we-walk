@@ -6,7 +6,8 @@
 // ---------------------------------------------------------------------------
 var trips = [
   {
-    name: "Mini Trip for young ones (ages 5-10)",
+    name: "Mini Trip for young ones",
+    detail: "(ages 5-10)",
     dates: "June 29 - July 3",
     location: "surrounding Bay Area",
     description:
@@ -29,12 +30,18 @@ var trips = [
     if (trip.image) {
       img.src = trip.image;
       img.alt = trip.name;
-      placeholder.hidden = true;
+      placeholder.style.display = "none";
     } else {
-      img.hidden = true;
+      img.style.display = "none";
     }
 
     col.querySelector(".trip-name").textContent = trip.name;
+    var detailEl = col.querySelector(".trip-detail");
+    if (trip.detail) {
+      detailEl.textContent = trip.detail;
+    } else {
+      detailEl.style.display = "none";
+    }
     col.querySelector(".trip-dates").textContent = trip.dates;
     col.querySelector(".trip-location").textContent = trip.location;
     col.querySelector(".trip-description").textContent = trip.description;
