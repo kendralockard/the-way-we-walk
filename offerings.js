@@ -1,8 +1,9 @@
 // ---------------------------------------------------------------------------
 // EDIT YOUR TRIPS HERE. Add, remove, or change entries in this one list and
-// both the cards on the offerings page and the sign-up dropdown update
-// automatically. `image` is optional — leave it as "" to show the grey
-// placeholder.
+// the cards on the offerings page update automatically.
+// `image` is optional — leave it as "" to show the grey placeholder.
+// `detail` is optional — a second line shown below the name on the card.
+// `page` is the filename of the trip's detail page.
 // ---------------------------------------------------------------------------
 var trips = [
   {
@@ -13,14 +14,14 @@ var trips = [
     description:
       "A week full of day trips exploring the Bay Area.  Offered to young ones aged 5 to 10.",
     image: "images/mini-trip-for-kids.jpeg",
+    page: "mini-trip.html",
   },
 ];
 
 (function () {
   var cards = document.getElementById("trip-cards");
-  var select = document.getElementById("trip-select");
   var template = document.getElementById("trip-card-template");
-  if (!cards || !select || !template) return; // not on the offerings page
+  if (!cards || !template) return; // not on the offerings page
 
   trips.forEach(function (trip) {
     var col = template.content.cloneNode(true).firstElementChild;
@@ -45,22 +46,8 @@ var trips = [
     col.querySelector(".trip-dates").textContent = trip.dates;
     col.querySelector(".trip-location").textContent = trip.location;
     col.querySelector(".trip-description").textContent = trip.description;
-    col.querySelector("a").dataset.trip = trip.name;
+    col.querySelector("a").href = trip.page;
 
     cards.appendChild(col);
-
-    var opt = document.createElement("option");
-    opt.textContent = trip.name;
-    select.appendChild(opt);
-  });
-
-  var general = document.createElement("option");
-  general.textContent = "not sure yet / general interest";
-  select.appendChild(general);
-
-  // Clicking a card's "see more" pre-selects that trip in the form.
-  cards.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-trip]");
-    if (btn) select.value = btn.getAttribute("data-trip");
   });
 })();

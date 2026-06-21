@@ -75,6 +75,11 @@ body {
   min-height: 400px;
 }
 
+.bgimg-mini-trip {
+  background-image: url("images/mini-trip-for-kids.jpeg");
+  min-height: 400px;
+}
+
 .w3-wide {
   letter-spacing: 10px;
 }
