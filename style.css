@@ -38,11 +38,11 @@ body {
 }
 
 /* Parallax Settings */
-.bgimg-1,
-.bgimg-2,
-.bgimg-3,
-.bgimg-4,
-.bgimg-5 {
+.bgimg-hero,
+.bgimg-about,
+.bgimg-inspiration,
+.bgimg-contact,
+.bgimg-offerings {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -50,28 +50,28 @@ body {
 }
 
 /* Image Assets (Updated with full URLs for testing) */
-.bgimg-1 {
-  background-image: url("images/img1.jpg");
+.bgimg-hero {
+  background-image: url("images/hero.jpeg");
   min-height: 100%;
 }
 
-.bgimg-2 {
-  background-image: url("images/img2.jpg");
+.bgimg-about {
+  background-image: url("images/about.jpeg");
   min-height: 400px;
 }
 
-.bgimg-3 {
-  background-image: url("images/img3.jpg");
+.bgimg-inspiration {
+  background-image: url("images/inspiration.jpeg");
   min-height: 400px;
 }
 
-.bgimg-4 {
-  background-image: url("images/img4.jpg");
+.bgimg-contact {
+  background-image: url("images/contact.jpeg");
   min-height: 400px;
 }
 
-.bgimg-5 {
-  background-image: url("images/img5.jpg");
+.bgimg-offerings {
+  background-image: url("images/offerings.jpg");
   min-height: 400px;
 }
 
@@ -80,6 +80,14 @@ body {
 }
 .w3-hover-opacity {
   cursor: pointer;
+}
+
+/* Bullet separator between desktop nav links. */
+.nav-sep {
+  display: inline-block;
+  padding: 8px 0;
+  color: #999;
+  vertical-align: middle;
 }
 
 /* Inspiration text card sits over the parallax canyon photo. */

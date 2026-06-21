@@ -6,25 +6,11 @@
 // ---------------------------------------------------------------------------
 var trips = [
   {
-    name: "[ Trip 1 name ]",
+    name: "Mini Trip for young ones",
     dates: "[ dates ]",
     location: "[ location ]",
     description: "[ A short description of the trip. ]",
     image: "", // e.g. "images/trip1.jpg"
-  },
-  {
-    name: "[ Trip 2 name ]",
-    dates: "[ dates ]",
-    location: "[ location ]",
-    description: "[ A short description of the trip. ]",
-    image: "",
-  },
-  {
-    name: "[ Trip 3 name ]",
-    dates: "[ dates ]",
-    location: "[ location ]",
-    description: "[ A short description of the trip. ]",
-    image: "",
   },
 ];
 
@@ -73,7 +59,7 @@ var trips = [
       "</p>" +
       '<a href="#signup" class="w3-button w3-black w3-round w3-medium" data-trip="' +
       esc(trip.name) +
-      '">request a spot &rarr;</a>' +
+      '">see details &rarr;</a>' +
       "</div></div>";
     cards.appendChild(col);
 
