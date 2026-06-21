@@ -76,7 +76,8 @@ body {
 }
 
 .bgimg-mini-trip {
-  background-image: url("images/mini-trip-for-kids.jpeg");
+  background-image: url("images/mini-trip-for-kids-2.jpeg");
+  background-position: center 80%;
   min-height: 400px;
 }
 
