@@ -91,6 +91,11 @@ body {
   cursor: pointer;
 }
 
+/* Background tint for trip page headers. */
+.trip-header {
+  background-color: #f7f5f2;
+}
+
 /* Bullet separator between desktop nav links. */
 .nav-sep {
   display: inline-block;
