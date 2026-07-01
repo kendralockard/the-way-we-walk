@@ -156,6 +156,32 @@ body {
   }
 }
 
+/* Small, muted site credit line shown in page footers. */
+.site-credit {
+  display: block;
+  margin-top: 32px;
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  color: #888;
+}
+.site-credit a {
+  color: #aaa;
+  text-decoration: none;
+}
+.site-credit a:hover {
+  color: #fff;
+}
+.site-credit.site-credit-light {
+  color: #aaa;
+}
+.site-credit.site-credit-light a {
+  color: #888;
+}
+.site-credit.site-credit-light a:hover {
+  color: #555;
+}
+
 /* Center trip cards so a single card (or any odd count) doesn't sit left-aligned. */
 #trip-cards {
   display: flex;
