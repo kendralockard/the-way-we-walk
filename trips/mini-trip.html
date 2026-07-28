@@ -4,14 +4,11 @@
     <title>Mini Trip for Young Ones — The Way We Walk</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
     />
     <link rel="stylesheet" href="../style.css" />
     <link
@@ -21,193 +18,74 @@
   </head>
   <body>
     <!-- Navbar is injected by navbar.js (shared across pages). -->
-    <div class="w3-top" id="site-nav"></div>
+    <div class="site-nav nav-sticky" id="site-nav"></div>
     <script src="../js/navbar.js"></script>
 
     <!-- Title -->
-    <div class="trip-header">
-      <div class="w3-content w3-container w3-padding-64 w3-center">
-        <h2 class="w3-semi-wide">mini trip for young ones</h2>
-        <h4>(ages 5-10)</h4>
-        <p class="w3-large">
-          <em>a week full of day trips exploring the Bay Area</em>
-        </p>
-      </div>
+    <div class="tinted-band trip-header">
+      <div class="trip-header-title">mini trip for young ones</div>
+      <div class="trip-header-subtitle">(ages 5-10)</div>
+      <p class="trip-header-tagline">a week full of day trips exploring the Bay Area</p>
     </div>
 
     <!-- At a glance -->
-    <div class="w3-content w3-container w3-padding-32">
-      <div class="w3-row w3-center">
-        <div class="w3-col m4">
-          <p class="w3-text-grey">
-            <i class="fa fa-calendar w3-margin-right"></i><strong>when</strong>
-          </p>
-          <p>June 29 – July 3</p>
-        </div>
-        <div class="w3-col m4">
-          <p class="w3-text-grey">
-            <i class="fa fa-map-marker w3-margin-right"></i
-            ><strong>where</strong>
-          </p>
-          <p>surrounding Bay Area</p>
-        </div>
-        <div class="w3-col m4">
-          <p class="w3-text-grey">
-            <i class="fa fa-tag w3-margin-right"></i><strong>cost</strong>
-          </p>
-          <p>sliding scale $600–$1200*</p>
-        </div>
+    <div class="trip-glance">
+      <div>
+        <div class="trip-glance-label">when</div>
+        <div class="trip-glance-value">June 29 – July 3</div>
+      </div>
+      <div>
+        <div class="trip-glance-label">where</div>
+        <div class="trip-glance-value">surrounding Bay Area</div>
+      </div>
+      <div>
+        <div class="trip-glance-label">cost</div>
+        <div class="trip-glance-value">sliding scale $600–$1200*</div>
       </div>
     </div>
 
-    <hr style="width: 60%; margin: 0 auto" />
+    <div class="trip-rule-wrap">
+      <div class="trip-rule"></div>
+    </div>
 
     <!-- What -->
-    <div class="w3-content w3-container w3-padding-64">
+    <div class="trip-what-wrap">
       <div class="trip-what-row">
         <div class="trip-what-text">
           <p>
             On our days together we will explore the nooks and crannies of the
-            Bay Area. We will dip our toes into salt water, find hidden corners
-            of the city, explore fairy forests, speak with the birds and the
-            plants, we will spend time listening, playing and exploring what
-            exists on our every day walks.
+            Bay Area. We will dip our toes into salt water, find hidden
+            corners of the city, explore fairy forests, speak with the birds
+            and the plants, we will spend time listening, playing and
+            exploring what exists on our every day walks.
           </p>
           <p>
-            Locations each day will be subject to change depending on weather,
-            participant ability and the resources at our disposal. Each day
-            parents and guardians will receive an email with information about
-            where we will be going the next day and what kind of clothes / food
-            their youth should be prepared with.
+            Locations each day will be subject to change depending on
+            weather, participant ability and the resources at our disposal.
+            Each day parents and guardians will receive an email with
+            information about where we will be going the next day and what
+            kind of clothes / food their youth should be prepared with.
           </p>
           <p>
             Pick up and drop-off locations will be determined based on
-            participant living locations and where they will be driving from. 
-            The aim will be to choose a location that is relatively equidistant
-            to all of us.
+            participant living locations and where they will be driving from.
+            The aim will be to choose a location that is relatively
+            equidistant to all of us.
           </p>
           <p>
-            *If transportation or cost is a barrier for you, feel free to email
-            <a href="mailto:WayWeWalk@proton.me">WayWeWalk@proton.me</a> to
-            discuss potential alternatives.
+            *If transportation or cost is a barrier for you, feel free to
+            email <a href="mailto:WayWeWalk@proton.me">WayWeWalk@proton.me</a>
+            to discuss potential alternatives.
           </p>
         </div>
         <div class="trip-what-photo">
-          <img
-            src="../images/mini-trip-for-kids-1.jpeg"
-            alt="Mini Trip for Young Ones"
-          />
+          <img src="../images/mini-trip-for-kids-1.jpeg" alt="Mini Trip for Young Ones" />
         </div>
       </div>
     </div>
 
-    <!-- Sign-up form -->
-    <div class="trip-header">
-      <div
-        class="w3-content w3-container w3-padding-64"
-        id="signup"
-        style="padding-top: 32px"
-      >
-        <div class="w3-center">
-          <h3>sign up</h3>
-          <p class="signup-intro">
-            Interested in signing your young one up for the course?<br />Fill
-            out the form below and we will be in touch with next steps!
-          </p>
-        </div>
-        <div class="w3-col l10 m12" style="margin: 0 auto; float: none">
-          <form
-            name="mini-trip-signup"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="../thank-you.html"
-          >
-            <input type="hidden" name="form-name" value="mini-trip-signup" />
-            <p hidden>
-              <label
-                ><strong>Don't fill this out: <input name="bot-field" /></strong
-              ></label>
-            </p>
-
-            <label><strong>Name of participant</strong></label>
-            <input
-              class="w3-input w3-border w3-section"
-              type="text"
-              name="participant-name"
-              required
-            />
-
-            <label><strong>Age of participant</strong></label>
-            <input
-              class="w3-input w3-border w3-section"
-              type="number"
-              name="participant-age"
-              required
-            />
-
-            <label><strong>Name of guardian</strong></label>
-            <input
-              class="w3-input w3-border w3-section"
-              type="text"
-              name="guardian-name"
-              required
-            />
-
-            <label><strong>How did you hear about this program?</strong></label>
-            <input
-              class="w3-input w3-border w3-section"
-              type="text"
-              name="referral"
-            />
-
-            <label
-              ><strong
-                >Why do you want your young one to participate in this
-                course?</strong
-              ></label
-            >
-            <textarea
-              class="w3-input w3-border w3-section"
-              name="reason"
-              rows="4"
-              required
-            ></textarea>
-
-            <label
-              ><strong
-                >Any questions or something you'd like us to know?</strong
-              ></label
-            >
-            <textarea
-              class="w3-input w3-border w3-section"
-              name="message"
-              rows="4"
-            ></textarea>
-
-            <button
-              class="w3-button w3-black w3-right w3-section"
-              type="submit"
-            >
-              <i class="fa fa-paper-plane"></i> send
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <footer class="w3-center w3-black w3-padding-64">
-      <a href="../offerings.html" class="w3-button w3-light-grey"
-        ><i class="fa fa-arrow-left w3-margin-right"></i>back to offerings</a
-      >
-      <span class="site-credit"
-        >Built by
-        <a href="https://github.com/kendralockard" target="_blank" rel="noopener"
-          ><i class="fa fa-github" aria-hidden="true"></i> @kendralockard</a
-        ></span
-      >
+    <footer class="site-footer">
+      <a href="../offerings.html" class="btn-footer">back to offerings</a>
     </footer>
-
-    <script src="../js/script.js"></script>
   </body>
 </html>

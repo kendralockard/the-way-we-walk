@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // EDIT YOUR TRIPS HERE. Add, remove, or change entries in this one list and
 // the cards on the offerings page update automatically.
-// `image` is optional — leave it as "" to show the grey placeholder.
+// `image` is optional — leave it as "" to show the diagonal-stripe placeholder.
 // `detail` is optional — a second line shown below the name on the card.
 // `page` is the path to the trip's detail page, relative to the site root.
 // ---------------------------------------------------------------------------
@@ -12,7 +12,7 @@ var trips = [
     dates: "June 29 - July 3",
     location: "surrounding Bay Area",
     description:
-      "A week full of day trips exploring the Bay Area.  Offered to young ones aged 5 to 10.",
+      "A week full of day trips exploring the Bay Area.  Offered to young ones aged 5 to 10.",
     image: "images/mini-trip-for-kids-2.jpeg",
     page: "trips/mini-trip.html",
   },
@@ -24,30 +24,30 @@ var trips = [
   if (!cards || !template) return; // not on the offerings page
 
   trips.forEach(function (trip) {
-    var col = template.content.cloneNode(true).firstElementChild;
-    var img = col.querySelector(".trip-card-image");
-    var placeholder = col.querySelector(".trip-card-placeholder");
+    var card = template.content.cloneNode(true).firstElementChild;
+    var img = card.querySelector(".trip-card-image");
+    var placeholder = card.querySelector(".trip-card-placeholder");
 
     if (trip.image) {
       img.src = trip.image;
       img.alt = trip.name;
-      placeholder.style.display = "none";
+      placeholder.remove();
     } else {
-      img.style.display = "none";
+      img.remove();
     }
 
-    col.querySelector(".trip-name").textContent = trip.name;
-    var detailEl = col.querySelector(".trip-detail");
+    card.querySelector(".trip-card-name").textContent = trip.name;
+    var detailEl = card.querySelector(".trip-card-detail");
     if (trip.detail) {
       detailEl.textContent = trip.detail;
     } else {
-      detailEl.style.display = "none";
+      detailEl.remove();
     }
-    col.querySelector(".trip-dates").textContent = trip.dates;
-    col.querySelector(".trip-location").textContent = trip.location;
-    col.querySelector(".trip-description").textContent = trip.description;
-    col.querySelector("a").href = trip.page;
+    card.querySelector(".trip-dates .trip-meta-text").textContent = trip.dates;
+    card.querySelector(".trip-location .trip-meta-text").textContent = trip.location;
+    card.querySelector(".trip-desc").textContent = trip.description;
+    card.querySelector("a").href = trip.page;
 
-    cards.appendChild(col);
+    cards.appendChild(card);
   });
 })();

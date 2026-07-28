@@ -4,14 +4,11 @@
     <title>The Way We Walk</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
     />
     <link rel="stylesheet" href="style.css" />
     <link
@@ -21,225 +18,172 @@
   </head>
   <body>
     <!-- Navbar is injected by navbar.js (shared across pages). -->
-    <div class="w3-top" id="site-nav"></div>
+    <div class="site-nav nav-fixed" id="site-nav"></div>
     <script src="js/navbar.js"></script>
 
-    <div class="bgimg-hero w3-display-container w3-opacity-min" id="home">
-      <div class="w3-display-middle" style="white-space: nowrap">
-        <span
-          class="w3-center w3-padding-large w3-light-grey w3-xlarge w3-wide w3-animate-opacity"
-          >the way we walk</span
-        >
+    <div class="parallax-band parallax-hero" id="home">
+      <div>
+        <div class="hero-title">the way we walk</div>
+        <div class="hero-rule"></div>
+        <div class="hero-pill">backpacking &amp; wilderness guiding</div>
       </div>
     </div>
 
-    <div class="w3-content w3-container w3-padding-64">
-      <div class="w3-center">
-        <h3 class="w3-center">welcome</h3>
-
-        <p>
-          Come with us on a long walk. At The Way We Walk, we offer excursions
-          into the mountains and forests where we provide the opportunity to
-          learn the skills involved with going on long multi-day walks. This is
-          a backpacking instruction and guide service. There is opportunity to
-          learn, there is also the opportunity to just be taken on a trip; the
-          way you would like to walk is for you to choose. We do not promise a
-          perfect experience, but instead a whole one. An experience where we
-          work in community, learn new things, feel the Earth next to our bodies
-          as we fall asleep, feel filled with life, feel irritated and cranky,
-          sit with discomfort, sit with the birds and the rocks, be with, be
-          alone, be...
-        </p>
-        <p>
-          Come move into a reality where the human is de-centered and
-          appropriately situated within our own being. A reality where we engage
-          more honestly with the world around us. Let us humbly ask for help
-          together. Here, you are welcome to be, to breathe, and to walk.
-        </p>
-      </div>
-
-      <p class="w3-center" style="margin-top: 32px">
-        <a href="offerings.html" class="w3-button w3-round offerings-btn">
-          see current offerings &rarr;
-        </a>
+    <div class="section-welcome reveal" data-reveal="welcome">
+      <div class="label-gold">welcome</div>
+      <p>
+        Come with us on a long walk. At The Way We Walk, we offer excursions
+        into the mountains and forests where we provide the opportunity to
+        learn the skills involved with going on long multi-day walks. This is
+        a backpacking instruction and guide service. There is opportunity to
+        learn, there is also the opportunity to just be taken on a trip; the
+        way you would like to walk is for you to choose. We do not promise a
+        perfect experience, but instead a whole one. An experience where we
+        work in community, learn new things, feel the Earth next to our
+        bodies as we fall asleep, feel filled with life, feel irritated and
+        cranky, sit with discomfort, sit with the birds and the rocks, be
+        with, be alone, be...
+      </p>
+      <p>
+        Come move into a reality where the human is de-centered and
+        appropriately situated within our own being. A reality where we
+        engage more honestly with the world around us. Let us humbly ask for
+        help together. Here, you are welcome to be, to breathe, and to walk.
+      </p>
+      <p class="welcome-cta">
+        <a href="offerings.html" class="btn btn-outline">see current offerings &rarr;</a>
       </p>
     </div>
 
-    <div class="bgimg-about w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">about</span>
-      </div>
+    <div class="parallax-band parallax-about">
+      <span class="banner-title">about</span>
     </div>
 
-    <div class="w3-content w3-container w3-padding-64" id="about">
-      <div class="w3-row vcenter-row">
-        <div class="w3-col m6 w3-center w3-padding-large">
-          <img
-            src="images/avalon.jpeg"
-            class="w3-round w3-image"
-            alt="Photo of Me"
-            width="500"
-            height="333"
-          />
-          <br />
-          <p>
-            <em>Avalon Qian</em>
-          </p>
+    <div class="section-about reveal" data-reveal="about" id="about">
+      <div class="about-grid">
+        <div class="about-photo">
+          <div class="about-photo-frame">
+            <img src="images/avalon.jpeg" alt="Photo of Me" />
+          </div>
+          <p class="about-caption">Avalon Qian</p>
         </div>
-        <div class="w3-col m6 w3-padding-large">
+        <div class="about-text">
           <p>
             Avalon began learning navigation the moment she began taking SF
             public transit on her own in the Bay Area. In this way she began
-            learning the subtle ways of situating herself in space, using a map,
-            orienting herself to her surroundings and finding her way home. Her
-            knowledge in this realm grew as she began working with a map and
-            compass in the mountains. In her opinion, being able to navigate
-            through any landscape is one of the most empowering and freeing
-            skills. It is with this passion that she hopes to help you walk
-            along our Earth.
+            learning the subtle ways of situating herself in space, using a
+            map, orienting herself to her surroundings and finding her way
+            home. Her knowledge in this realm grew as she began working with a
+            map and compass in the mountains. In her opinion, being able to
+            navigate through any landscape is one of the most empowering and
+            freeing skills. It is with this passion that she hopes to help you
+            walk along our Earth.
           </p>
-
           <p>
             Avalon has been working in the outdoor industry for the past 13
-            years. She has successfully led multi-day backpacking, climbing and
-            kayaking trips that range from short weekends to full month-longs.
-            She has worked at various institutions, the most notable and
-            influential being the National Outdoor Leadership School (based out
-            of Lander, WY) and GirlVentures (based out of Oakland, CA). Avalon
-            is incredibly grateful to have learned and grown as an outdoor
-            educator in spaces that taught her how to love community and dial in
-            her skillset.
+            years. She has successfully led multi-day backpacking, climbing
+            and kayaking trips that range from short weekends to full
+            month-longs. She has worked at various institutions, the most
+            notable and influential being the National Outdoor Leadership
+            School (based out of Lander, WY) and GirlVentures (based out of
+            Oakland, CA). Avalon is incredibly grateful to have learned and
+            grown as an outdoor educator in spaces that taught her how to love
+            community and dial in her skillset.
           </p>
-
           <p>
             Avalon grew up in the San Francisco and she loves the body of the
-            Bay, the Golden Gate entry way and the water ways that have flown in
-            and out of her reality while growing up. With lots of active energy,
-            she loves playing soccer, dancing, surfing, rock climbing, painting,
-            singing, jumping in the ocean, snuggling with her hound, playing
-            games of any kind, coaching, among other things. Taking long walks
-            in the mountains reminds her of the beauty of moving slowly, of
-            paying attention, taking in smells and sensations, smiling at the
-            rocks, singing to the bees.
+            Bay, the Golden Gate entry way and the water ways that have flown
+            in and out of her reality while growing up. With lots of active
+            energy, she loves playing soccer, dancing, surfing, rock
+            climbing, painting, singing, jumping in the ocean, snuggling with
+            her hound, playing games of any kind, coaching, among other
+            things. Taking long walks in the mountains reminds her of the
+            beauty of moving slowly, of paying attention, taking in smells and
+            sensations, smiling at the rocks, singing to the bees.
           </p>
         </div>
       </div>
     </div>
 
-    <div class="bgimg-inspiration w3-display-container">
-      <div class="w3-content w3-padding-64">
-        <div
-          class="w3-card w3-round w3-padding-large inspiration-card"
-          style="max-width: 760px; margin: 0 auto"
-        >
-          <h3 class="w3-center">inspiration</h3>
-          <div class="w3-center">
-            <p>
-              In 2025, Avalon completed a 30 day solo backpacking adventure of
-              part of the Grand Canyon, land sacred to many people on Turtle
-              Island: The Western Shoshone, Southern Paiute, Hualapai, Hopi,
-              Zuni, Diné, Pueblos, Havasupai.
-            </p>
-            <hr class="w3-border-black" style="border-top-width: 0.5px" />
-            <p>
-              The walls of the Canyon are etched into my heart as I am etched
-              into the walls of the Canyon. My work is in full service to the
-              Canyon, who has given me my life back to myself. I give myself
-              entirely to the Canyon, whatever it is I am to do is in service to
-              the energy, spirit, entity of that sacred place.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="w3-content w3-container w3-padding-64" id="land">
-      <div class="w3-center">
-        <h3 class="w3-center">land</h3>
+    <div class="parallax-band parallax-inspiration">
+      <div class="inspiration-card reveal" data-reveal="inspiration">
+        <div class="inspiration-title">inspiration</div>
         <p>
-          My ancestry does not originate on Turtle Island, aka the land
-          colonized as the United States. My roots take me to Europe and China,
-          with histories known and unknown in Ireland, Scotland and the Anhui
-          province. I walk on these lands as a settler colonizer having grown up
-          in unsceded Ohlone territory. My intention is to continue to learn how
-          to decolonize my relationship to land and my work. I want to be in
-          relation with the land, the histories and my work in a good way. I am
-          far from perfect in this realm. For each area that we go to explore,
-          the intention is to learn about what the first nations people of that
-          land are doing today and how we can support them.
+          In 2025, Avalon completed a 30 day solo backpacking adventure of
+          part of the Grand Canyon, land sacred to many people on Turtle
+          Island: The Western Shoshone, Southern Paiute, Hualapai, Hopi, Zuni,
+          Diné, Pueblos, Havasupai.
         </p>
-
-        <p>
-          At the Way We Walk we believe in a Free Palestine, Land back to
-          indigenous nations, Land Back to itself, the abolition of prisons, and
-          Reparations. To be with land, to listen to the land, and to ask for
-          help from the land means to stand in solidarity with those who have
-          been severed from their connections to land and who are fighting today
-          to return.
+        <div class="inspiration-rule"></div>
+        <p class="inspiration-quote">
+          The walls of the Canyon are etched into my heart as I am etched into
+          the walls of the Canyon. My work is in full service to the Canyon,
+          who has given me my life back to myself. I give myself entirely to
+          the Canyon, whatever it is I am to do is in service to the energy,
+          spirit, entity of that sacred place.
         </p>
       </div>
     </div>
 
-    <div class="bgimg-contact w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">contact</span>
-      </div>
+    <div class="section-land reveal" data-reveal="land" id="land">
+      <div class="label-gold">land</div>
+      <p>
+        My ancestry does not originate on Turtle Island, aka the land
+        colonized as the United States. My roots take me to Europe and China,
+        with histories known and unknown in Ireland, Scotland and the Anhui
+        province. I walk on these lands as a settler colonizer having grown up
+        in unsceded Ohlone territory. My intention is to continue to learn how
+        to decolonize my relationship to land and my work. I want to be in
+        relation with the land, the histories and my work in a good way. I am
+        far from perfect in this realm. For each area that we go to explore,
+        the intention is to learn about what the first nations people of that
+        land are doing today and how we can support them.
+      </p>
+      <p>
+        At the Way We Walk we believe in a Free Palestine, Land back to
+        indigenous nations, Land Back to itself, the abolition of prisons, and
+        Reparations. To be with land, to listen to the land, and to ask for
+        help from the land means to stand in solidarity with those who have
+        been severed from their connections to land and who are fighting today
+        to return.
+      </p>
     </div>
 
-    <div class="w3-content w3-container w3-padding-64" id="contact">
-      <div class="w3-row w3-padding-32 w3-section">
-        <div class="w3-col m8 w3-panel">
-          <form
-            id="contactForm"
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/thank-you.html"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <p hidden>
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
-            <input
-              class="w3-input w3-border"
-              type="text"
-              placeholder="name"
-              required
-              name="name"
-            />
-            <input
-              class="w3-input w3-border w3-section"
-              type="email"
-              placeholder="email"
-              required
-              name="email"
-            />
-            <textarea
-              class="w3-input w3-border w3-section"
-              placeholder="message"
-              required
-              name="message"
-              rows="4"
-            ></textarea>
-            <button class="w3-button w3-black w3-right" type="submit">
-              <i class="fa fa-paper-plane"></i> send
-            </button>
-          </form>
+    <div class="parallax-band parallax-contact">
+      <span class="banner-title">contact</span>
+    </div>
+
+    <div class="section-contact reveal" data-reveal="contact" id="contact">
+      <form
+        id="contactForm"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thank-you.html"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-field">
+          <label class="form-label" for="contact-name">name</label>
+          <input class="form-input" type="text" required name="name" id="contact-name" />
         </div>
-      </div>
+        <div class="form-field">
+          <label class="form-label" for="contact-email">email</label>
+          <input class="form-input" type="email" required name="email" id="contact-email" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="contact-message">message</label>
+          <textarea class="form-textarea" required name="message" id="contact-message" rows="4"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-solid">send</button>
+        </div>
+      </form>
     </div>
 
-    <footer class="w3-center w3-black w3-padding-64">
-      <a href="#home" class="w3-button w3-light-grey"
-        ><i class="fa fa-arrow-up w3-margin-right"></i>to the top</a
-      >
-      <span class="site-credit"
-        >Built by
-        <a href="https://github.com/kendralockard" target="_blank" rel="noopener"
-          ><i class="fa fa-github" aria-hidden="true"></i> @kendralockard</a
-        ></span
-      >
+    <footer class="site-footer">
+      <a href="#home" class="btn-footer">to the top</a>
     </footer>
     <script src="js/script.js"></script>
   </body>

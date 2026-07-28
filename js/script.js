@@ -1,27 +1,22 @@
-// Change style of navbar on scroll
-window.onscroll = function () {
-  myFunction();
-};
-function myFunction() {
-  var navbar = document.getElementById("myNavbar");
-  var scrolled =
-    window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-  if (scrolled > 100) {
-    navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-  } else {
-    navbar.className = navbar.className.replace(
-      " w3-card w3-animate-top w3-white",
-      "",
-    );
-  }
-}
+// Scroll-reveal: each major section on the home page fades up into view the
+// first time it crosses 15% visibility, then stops observing it.
+(function () {
+  var targets = document.querySelectorAll("[data-reveal]");
+  if (!targets.length) return;
 
-// Toggle mobile menu
-function toggleFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
+
+  targets.forEach(function (el) {
+    observer.observe(el);
+  });
+})();

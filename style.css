@@ -1,4 +1,101 @@
-/* General Styles */
+/* ---------------------------------------------------------------------------
+   Fonts. Spectral (display/headline face, used italic throughout) is loaded
+   via Google Fonts in each page's <head>. Josefin Sans (body & UI text) is
+   self-hosted, see fonts/.
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans/JosefinSans-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------------------------------------------------------------------------
+   Design tokens
+--------------------------------------------------------------------------- */
+:root {
+  --cream: #faf6ef;
+  --cream-card: #fdfbf6;
+  --band-tint: #f1ecdf;
+  --text-primary: #3a3b33;
+  --text-body: #4b4c42;
+  --muted-1: #6b6f63;
+  --muted-2: #9a8f6e;
+  --muted-3: #8a8266;
+  --forest: #3b4a34;
+  --forest-dark: #2a3327;
+  --gold: #b08b57;
+  --input-line: #c9be9f;
+  --link: #6b5a3a;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
   /* Guard against horizontal scrolling. Applied to <html>, NOT <body>: putting
@@ -6,209 +103,627 @@ html {
      which stops window scroll events from firing and breaks the
      navbar-on-scroll color change and the mobile parallax. */
   overflow-x: hidden;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input,
-select,
-textarea,
-button,
-.w3-button {
-  font-family: "EB Garamond", serif;
-}
-
-body,
-html {
   height: 100%;
-  color: #777;
-  line-height: 1.8;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-primary);
   /* Explicit, since a top-level tab defaults unstyled areas to opaque white
      regardless of OS dark mode, but a cross-origin iframe doesn't reliably
      get the same treatment in Safari — without this, whatever's behind the
      embedding page's iframe container shows through instead. */
-  background-color: #fff;
+  background-color: var(--cream);
 }
 
-/* EB Garamond runs a little small, so bump the base text size everywhere.
-   Set on body (not html) so rem units stay anchored to 16px. Headings keep
-   their own fixed sizes from W3.CSS, so they're unaffected. */
-body {
-  font-size: 1.1rem;
+img {
+  max-width: 100%;
 }
 
-/* Parallax Settings */
-.bgimg-hero,
-.bgimg-about,
-.bgimg-inspiration,
-.bgimg-contact,
-.bgimg-offerings {
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--forest);
+}
+::selection {
+  background: var(--gold);
+  color: #fff;
+}
+
+.serif {
+  font-family: "Spectral", serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Nav
+--------------------------------------------------------------------------- */
+.site-nav {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.site-nav.nav-fixed {
+  position: fixed;
+  background: transparent;
+  box-shadow: none;
+}
+.site-nav.nav-fixed.scrolled {
+  background: #faf6efee;
+  box-shadow: 0 4px 20px rgba(30, 25, 10, 0.08);
+}
+.site-nav.nav-sticky {
+  position: sticky;
+  background: #faf6efee;
+  box-shadow: 0 4px 20px rgba(30, 25, 10, 0.08);
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 32px;
+}
+
+.nav-wordmark {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 20px;
+  letter-spacing: 1px;
+  transition: color 0.4s ease;
+}
+.nav-wordmark-light {
+  color: #faf6ef;
+}
+.nav-wordmark-dark {
+  color: var(--forest);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-link {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+}
+.nav-link-light {
+  color: #faf6ef;
+}
+.nav-link-dark {
+  color: var(--text-body);
+}
+.nav-link-active {
+  color: var(--forest);
+}
+
+@media (max-width: 600px) {
+  .nav-inner {
+    padding: 16px 20px;
+    gap: 8px;
+  }
+  .nav-links {
+    gap: 18px;
+  }
+  .nav-link {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+  .nav-wordmark {
+    font-size: 17px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Parallax bands
+--------------------------------------------------------------------------- */
+.parallax-band {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/* Image Assets (Updated with full URLs for testing) */
-.bgimg-hero {
-  background-image: url("images/hero.jpeg");
-  min-height: 100%;
-}
-
-.bgimg-about {
-  background-image: url("images/about.jpeg");
-  min-height: 400px;
-}
-
-.bgimg-inspiration {
-  background-image: url("images/inspiration.jpeg");
-  min-height: 400px;
-}
-
-.bgimg-contact {
-  background-image: url("images/contact.jpeg");
-  min-height: 400px;
-}
-
-.bgimg-offerings {
-  background-image: url("images/offerings.jpg");
-  min-height: 400px;
-}
-
-.bgimg-mini-trip {
-  background-image: url("images/mini-trip-for-kids-2.jpeg");
-  background-position: center 80%;
-  min-height: 400px;
-}
-
-.w3-wide {
-  letter-spacing: 10px;
-}
-.w3-semi-wide {
-  letter-spacing: 4px;
-}
-.w3-hover-opacity {
-  cursor: pointer;
-}
-
-/* Sign-up form styles. */
-#signup label strong {
-  font-weight: 600;
-}
-#signup .w3-section {
-  margin-top: 4px !important;
-}
-.signup-intro {
-  line-height: 1.5;
-}
-
-/* Background tint for trip page headers. */
-.trip-header {
-  background-color: #f7f5f2;
-}
-
-/* Bullet separator between desktop nav links. */
-.nav-sep {
-  display: inline-block;
-  padding: 8px 0;
-  color: #999;
-  vertical-align: middle;
-}
-
-/* Inspiration text card sits over the parallax canyon photo. */
-.inspiration-card {
-  background-color: rgba(255, 255, 255, 0.92);
-}
-
-/* All buttons fade gently on hover. W3.CSS already turns buttons a light grey
-   (#ccc) on hover; this just makes the change gradual (0.5s) instead of instant. */
-.w3-button {
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease;
-}
-/* A slightly lighter grey than W3.CSS's default #ccc on hover. */
-.w3-button:hover {
-  background-color: #e0e0e0d7 !important;
-}
-
-/* "see current offerings" button: white with a black outline, bold italic.
-   Inverts to a black background on hover. */
-.offerings-btn {
-  background-color: #fff;
-  border: 2px solid #000;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
-.offerings-btn:hover {
-  background-color: #000 !important;
-  color: #fff !important;
-}
-
-/* Vertically center the photo and text columns in the about & land sections.
-   Only applies at the W3.CSS medium breakpoint (>=601px), where the columns
-   sit side by side; below that they stack normally. */
-@media (min-width: 601px) {
-  .vcenter-row {
-    display: flex;
-    align-items: center;
-  }
-}
-
-/* Small, muted site credit line shown in page footers. */
-.site-credit {
-  display: block;
-  margin-top: 32px;
-  font-size: 0.8rem;
-  font-style: italic;
-  letter-spacing: 0.5px;
-  color: #888;
-}
-.site-credit a {
-  color: #aaa;
-  text-decoration: none;
-}
-.site-credit a:hover {
-  color: #fff;
-}
-.site-credit.site-credit-light {
-  color: #aaa;
-}
-.site-credit.site-credit-light a {
-  color: #888;
-}
-.site-credit.site-credit-light a:hover {
-  color: #555;
-}
-
-/* Center trip cards so a single card (or any odd count) doesn't sit left-aligned. */
-#trip-cards {
+.parallax-hero {
+  background-image:
+    linear-gradient(180deg, rgba(20, 22, 16, 0.15) 0%, rgba(20, 22, 16, 0.5) 100%),
+    url("images/hero.jpeg");
+  min-height: 100vh;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.parallax-about {
+  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.35), rgba(20, 22, 16, 0.35)),
+    url("images/about.jpeg");
+  min-height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
+.parallax-inspiration {
+  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.25), rgba(20, 22, 16, 0.25)),
+    url("images/inspiration.jpeg");
+  padding: 110px 32px;
+}
+
+.parallax-contact {
+  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.35), rgba(20, 22, 16, 0.35)),
+    url("images/contact.jpeg");
+  min-height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-offerings {
+  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.35), rgba(20, 22, 16, 0.35)),
+    url("images/offerings.jpg");
+  min-height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-title {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 40px;
+  color: #faf6ef;
+  letter-spacing: 6px;
+}
+
+/* ---------------------------------------------------------------------------
+   Hero
+--------------------------------------------------------------------------- */
+.hero-title {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(42px, 7vw, 84px);
+  color: #faf6ef;
+  letter-spacing: 6px;
+  line-height: 1.15;
+}
+.hero-rule {
+  width: 64px;
+  height: 1px;
+  background: var(--gold);
+  margin: 28px auto;
+}
+.hero-pill {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(10, 11, 8, 0.6);
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #f3eee0;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal (home page only)
+--------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------------------
+   Shared section bits
+--------------------------------------------------------------------------- */
+.label-gold {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+/* Welcome */
+.section-welcome {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px 32px 100px;
+  text-align: center;
+}
+.section-welcome p {
+  font-size: 19px;
+  line-height: 1.9;
+  color: var(--text-body);
+}
+.welcome-cta {
+  margin-top: 40px;
+}
+
+/* About */
+.section-about {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 110px 32px;
+}
+.about-grid {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+.about-photo {
+  flex: 1 1 380px;
+  text-align: center;
+}
+.about-photo-frame {
+  padding: 14px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(40, 35, 20, 0.12);
+  display: inline-block;
+}
+.about-photo-frame img {
+  height: auto;
+  display: block;
+}
+.about-caption {
+  margin-top: 18px;
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--link);
+}
+.about-text {
+  flex: 1 1 420px;
+}
+.about-text p {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--text-body);
+}
+
+/* Inspiration */
+.inspiration-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--cream-card);
+  padding: 56px 48px;
+  box-shadow: 0 24px 60px rgba(20, 20, 10, 0.25);
+  border-top: 3px solid var(--gold);
+  text-align: center;
+}
+.inspiration-title {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--forest);
+}
+.inspiration-card p {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--text-body);
+  margin-top: 24px;
+}
+.inspiration-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 28px auto;
+}
+.inspiration-quote {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+/* Land */
+.section-land {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 110px 32px;
+  text-align: center;
+}
+.section-land p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: var(--text-body);
+}
+
+/* Contact / forms (shared with the mini-trip sign-up form) */
+.section-contact {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 110px 32px;
+}
+.form-field {
+  margin-bottom: 24px;
+}
+.form-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted-3);
+  margin-bottom: 8px;
+}
+.form-input,
+.form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid var(--input-line);
+  background: transparent;
+  padding: 8px 2px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  color: var(--text-primary);
+  outline: none;
+}
+.form-textarea {
+  resize: vertical;
+}
+.form-actions {
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.btn {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+.btn-outline {
+  padding: 14px 36px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  background: transparent;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+.btn-outline-sm {
+  padding: 12px 28px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  background: transparent;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+}
+.btn-solid {
+  float: right;
+  padding: 14px 40px;
+  background: var(--forest);
+  color: var(--cream);
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+--------------------------------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  background: var(--forest-dark);
+  color: #e9e1d2;
+  padding: 80px 32px 56px;
+}
+.btn-footer {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 1px solid var(--gold);
+  color: #e9e1d2;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+/* ---------------------------------------------------------------------------
+   Offerings — trip cards
+--------------------------------------------------------------------------- */
+.section-offerings {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 32px;
+}
+.offerings-intro {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.trip-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.trip-card {
+  width: 340px;
+  background: var(--cream-card);
+  box-shadow: 0 18px 44px rgba(40, 35, 20, 0.1);
+  overflow: hidden;
+}
+.trip-card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 45%;
+  display: block;
+}
+.trip-card-placeholder {
+  height: 220px;
+  background: repeating-linear-gradient(135deg, #efe9da, #efe9da 10px, #e7dfcb 10px, #e7dfcb 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trip-card-placeholder span {
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted-2);
+}
+.trip-card-body {
+  padding: 32px;
+}
+.trip-card-name {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--forest-dark);
+}
+.trip-card-detail {
+  font-size: 13px;
+  color: var(--muted-2);
+  margin-top: 4px;
+}
+.trip-divider {
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  margin: 18px 0;
+}
+.trip-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted-1);
+  margin: 6px 0;
+}
+.trip-icon {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  color: var(--gold);
+}
+.trip-desc {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-body);
+  margin: 20px 0 0;
+}
+.trip-card-body .btn-outline-sm {
+  margin-top: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+   Trip detail page
+--------------------------------------------------------------------------- */
+.tinted-band {
+  background: var(--band-tint);
+}
+.trip-header {
+  text-align: center;
+  padding: 96px 32px 72px;
+}
+.trip-header-title {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 44px;
+  color: var(--forest-dark);
+  letter-spacing: 1px;
+}
+.trip-header-subtitle {
+  font-size: 16px;
+  color: var(--muted-1);
+  margin-top: 8px;
+}
+.trip-header-tagline {
+  font-size: 19px;
+  font-style: italic;
+  color: var(--text-body);
+  margin-top: 20px;
+}
+
+.trip-glance {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 32px 0;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.trip-glance-label {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.trip-glance-value {
+  font-size: 17px;
+  color: var(--text-primary);
+}
+
+.trip-rule-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 32px;
+}
+.trip-rule {
+  width: 100%;
+  height: 1px;
+  background: #dcd3b8;
+}
+
+.trip-what-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px 100px;
+}
 .trip-what-row {
   display: flex;
-  gap: 2rem;
+  gap: 56px;
   align-items: stretch;
+  flex-wrap: wrap;
 }
 .trip-what-text {
-  flex: 6;
+  flex: 6 1 400px;
+}
+.trip-what-text p {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--text-body);
 }
 .trip-what-photo {
-  flex: 4;
+  flex: 4 1 300px;
 }
 .trip-what-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  box-shadow: 0 18px 44px rgba(40, 35, 20, 0.12);
 }
 @media (max-width: 600px) {
   .trip-what-row {
@@ -223,70 +738,100 @@ body {
   }
 }
 
-.trip-card-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  object-position: center 45%;
-  border-radius: 4px 4px 0 0;
+.signup-band {
+  padding: 80px 32px;
+}
+.signup-intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.signup-title {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--forest-dark);
+}
+.signup-intro p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-body);
+  margin-top: 14px;
+}
+.signup-form {
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-.trip-detail {
-  display: block;
-  font-size: 0.85em;
-  font-weight: normal;
-  color: #999;
+/* ---------------------------------------------------------------------------
+   Thank-you page
+--------------------------------------------------------------------------- */
+.thankyou-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-.trip-card-placeholder {
+.thankyou-content {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  text-align: center;
+  padding: 64px 32px;
+}
+.thankyou-inner {
+  max-width: 560px;
+}
+.thankyou-title {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 40px;
+  color: var(--forest-dark);
+  margin-bottom: 22px;
+}
+.thankyou-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 28px;
+}
+.thankyou-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-body);
+}
+.thankyou-content .btn-outline {
+  margin-top: 28px;
 }
 
-/* Responsive: Turn off parallax for mobile/tablets only.
-   (Was max-device-width: 1600px, which disabled parallax on virtually
-   every laptop/desktop, so the effect never showed.) */
+/* ---------------------------------------------------------------------------
+   Mobile: parallax doesn't render reliably with fixed attachment, so fall
+   back to normal scroll-attachment, same as the previous design.
+--------------------------------------------------------------------------- */
 @media only screen and (max-width: 768px) {
-  /* Mobile browsers don't support fixed-attachment parallax, so the
-     backgrounds simply scroll normally here. */
-  .bgimg-hero,
-  .bgimg-about,
-  .bgimg-inspiration,
-  .bgimg-contact,
-  .bgimg-offerings {
+  .parallax-hero,
+  .parallax-about,
+  .parallax-inspiration,
+  .parallax-contact,
+  .parallax-offerings {
     background-attachment: scroll;
-    min-height: 400px;
   }
-
-  /* Per-image position tuning for mobile: show the interesting part
-     of each photo in the narrow horizontal strip. */
-  .bgimg-hero {
+  .parallax-hero {
+    min-height: 100vh;
     background-position: center 65%;
   }
-  .bgimg-about {
+  .parallax-about {
+    min-height: 320px;
     background-position: center 35%;
   }
-  .bgimg-inspiration {
+  .parallax-inspiration {
     background-position: center 60%;
   }
-  .bgimg-contact {
+  .parallax-contact {
+    min-height: 320px;
     background-position: center 50%;
   }
-  .bgimg-offerings {
+  .parallax-offerings {
+    min-height: 320px;
     background-position: center 55%;
-  }
-
-  /* The 10px tracking overflows narrow screens; tighten it on mobile. */
-  .w3-wide {
-    letter-spacing: 3px;
-  }
-
-  /* On phones the card filled the screen and hid the canyon. Make it more
-     transparent and let the photo show as a frame around it. */
-  .inspiration-card {
-    background-color: rgba(255, 255, 255, 0.8);
-    max-width: 88% !important;
   }
 }

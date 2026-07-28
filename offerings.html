@@ -4,75 +4,65 @@
     <title>Offerings — The Way We Walk</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌎</text></svg>">
   </head>
   <body>
     <!-- Navbar is injected by navbar.js (shared across pages). -->
-    <div class="w3-top" id="site-nav"></div>
+    <div class="site-nav nav-sticky" id="site-nav"></div>
     <script src="js/navbar.js"></script>
 
     <!-- Banner -->
-    <div class="bgimg-offerings w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">offerings</span>
-      </div>
+    <div class="parallax-band parallax-offerings">
+      <span class="banner-title">offerings</span>
     </div>
 
     <!-- Intro -->
-    <div class="w3-content w3-container w3-padding-64" id="offerings">
-      <div class="w3-center">
-        <h3 class="w3-center">current offerings</h3>
+    <div class="section-offerings" id="offerings">
+      <div class="offerings-intro">
+        <div class="label-gold">past offerings</div>
       </div>
 
       <!-- Trip cards are rendered by the script at the bottom of this page,
            from the `trips` array. To add/edit/remove a trip, edit that one
            list — you don't need to touch the markup here. -->
-      <div class="w3-row-padding w3-padding-32" id="trip-cards"></div>
+      <div class="trip-cards" id="trip-cards"></div>
 
       <template id="trip-card-template">
-        <div class="w3-col m4 w3-margin-bottom">
-          <div class="w3-card w3-round w3-white">
-            <img class="trip-card-image" alt="" />
-            <div class="trip-card-placeholder w3-light-grey w3-center">
-              <i class="fa fa-picture-o w3-jumbo w3-text-grey"></i>
-            </div>
-            <div class="w3-container w3-padding-16">
-              <h4><span class="trip-name"></span><small class="trip-detail"></small></h4>
-              <p class="w3-text-grey">
-                <i class="fa fa-calendar w3-margin-right"></i><span class="trip-dates"></span><br />
-                <i class="fa fa-map-marker w3-margin-right"></i><span class="trip-location"></span>
-              </p>
-              <p class="trip-description"></p>
-              <a href="" class="w3-button w3-black w3-round w3-medium">see more &rarr;</a>
-            </div>
+        <div class="trip-card">
+          <img class="trip-card-image" alt="" />
+          <div class="trip-card-placeholder">
+            <span>trip photo</span>
+          </div>
+          <div class="trip-card-body">
+            <div class="trip-card-name"></div>
+            <div class="trip-card-detail"></div>
+            <div class="trip-divider"></div>
+            <p class="trip-meta trip-dates">
+              <svg class="trip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span class="trip-meta-text"></span>
+            </p>
+            <p class="trip-meta trip-location">
+              <svg class="trip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.3"/></svg>
+              <span class="trip-meta-text"></span>
+            </p>
+            <p class="trip-desc"></p>
+            <a href="" class="btn btn-outline-sm">see more &rarr;</a>
           </div>
         </div>
       </template>
     </div>
 
-    <footer class="w3-center w3-black w3-padding-64">
-      <a href="index.html" class="w3-button w3-light-grey"
-        ><i class="fa fa-arrow-left w3-margin-right"></i>back home</a
-      >
-      <span class="site-credit"
-        >Built by
-        <a href="https://github.com/kendralockard" target="_blank" rel="noopener"
-          ><i class="fa fa-github" aria-hidden="true"></i> @kendralockard</a
-        ></span
-      >
+    <footer class="site-footer">
+      <a href="index.html" class="btn-footer">back home</a>
     </footer>
 
-    <script src="js/script.js"></script>
     <script src="js/offerings.js"></script>
   </body>
 </html>
