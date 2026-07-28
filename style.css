@@ -81,6 +81,18 @@ body {
   min-height: 400px;
 }
 
+/* Embedding this page in a cross-origin iframe (see js/embed.js) freezes
+   scrolling entirely when a fixed-attachment background is present — a
+   known Chrome bug. Fall back to normal scroll-attachment there, same as
+   the mobile fallback below. */
+.embedded .bgimg-hero,
+.embedded .bgimg-about,
+.embedded .bgimg-inspiration,
+.embedded .bgimg-contact,
+.embedded .bgimg-offerings {
+  background-attachment: scroll;
+}
+
 .w3-wide {
   letter-spacing: 10px;
 }
