@@ -28,6 +28,11 @@ html {
   height: 100%;
   color: #777;
   line-height: 1.8;
+  /* Explicit, since a top-level tab defaults unstyled areas to opaque white
+     regardless of OS dark mode, but a cross-origin iframe doesn't reliably
+     get the same treatment in Safari — without this, whatever's behind the
+     embedding page's iframe container shows through instead. */
+  background-color: #fff;
 }
 
 /* EB Garamond runs a little small, so bump the base text size everywhere.
