@@ -1,22 +1,8 @@
 /* ---------------------------------------------------------------------------
-   Fonts. Spectral (display/headline face, used italic throughout) is loaded
-   via Google Fonts in each page's <head>. Josefin Sans (body & UI text) is
-   self-hosted, see fonts/.
+   Fonts. EB Garamond (display/headline face) is loaded via Google Fonts in
+   each page's <head>. Josefin Sans (body & UI text) is self-hosted, see
+   fonts/josefin-sans.
 --------------------------------------------------------------------------- */
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-Thin.ttf") format("truetype");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-ThinItalic.ttf") format("truetype");
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
-}
 @font-face {
   font-family: "Josefin Sans";
   src: url("fonts/josefin-sans/JosefinSans-Light.ttf") format("truetype");
@@ -59,27 +45,14 @@
   font-style: italic;
   font-display: swap;
 }
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
 
 /* ---------------------------------------------------------------------------
    Design tokens
 --------------------------------------------------------------------------- */
 :root {
-  --cream: #faf6ef;
-  --cream-card: #fdfbf6;
+  --cream: #faf7f0;
+  --card-white: #ffffff;
+  --inspiration-card: #fbf3e4;
   --band-tint: #f1ecdf;
   --text-primary: #3a3b33;
   --text-body: #4b4c42;
@@ -89,8 +62,12 @@
   --forest: #3b4a34;
   --forest-dark: #2a3327;
   --gold: #b08b57;
+  --brown: #6b5a3a;
+  --moss: #5c6b42;
+  --moss-bg-1: rgba(107, 122, 79, 0.1);
+  --moss-bg-2: rgba(107, 122, 79, 0.12);
   --input-line: #c9be9f;
-  --link: #6b5a3a;
+  --icon-color: #2a2a24;
 }
 
 /* ---------------------------------------------------------------------------
@@ -120,16 +97,23 @@ body {
   background-color: var(--cream);
 }
 
+/* Faint paper-grain texture, home page only (matches the reference exactly —
+   the other pages' background is a flat color with no texture). */
+body.textured {
+  background: var(--cream)
+    url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 opacity=%220.035%22/></svg>");
+}
+
 img {
   max-width: 100%;
 }
 
 a {
-  color: var(--link);
+  color: var(--brown);
   text-decoration: none;
 }
 a:hover {
-  color: var(--forest);
+  color: var(--moss);
 }
 ::selection {
   background: var(--gold);
@@ -137,7 +121,30 @@ a:hover {
 }
 
 .serif {
-  font-family: "Spectral", serif;
+  font-family: "EB Garamond", serif;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-2px);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Icons — the hand-drawn spiral motif (welcome/inspiration subheads, favicon)
+--------------------------------------------------------------------------- */
+.spiral-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--icon-color);
+  flex-shrink: 0;
+}
+.spiral-icon-mirror {
+  transform: scaleX(-1);
 }
 
 /* ---------------------------------------------------------------------------
@@ -168,22 +175,22 @@ a:hover {
 }
 
 .nav-inner {
-  max-width: 1280px;
+  max-width: 1800px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 20px 32px;
+  padding: 0 48px;
+  height: 72px;
 }
 
 .nav-wordmark {
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-size: 20px;
-  letter-spacing: 1px;
-  transition: color 0.4s ease;
+  letter-spacing: 3px;
+  transition:
+    color 0.4s ease,
+    opacity 0.4s ease;
 }
 .nav-wordmark-light {
   color: #faf6ef;
@@ -191,17 +198,34 @@ a:hover {
 .nav-wordmark-dark {
   color: var(--forest);
 }
+.nav-wordmark-hidden {
+  opacity: 0;
+}
+.nav-wordmark-visible {
+  opacity: 1;
+}
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 6px;
+  height: 100%;
 }
 .nav-link {
-  font-size: 12px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  transition: color 0.4s ease;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 14px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--moss);
+  background: var(--moss-bg-2);
 }
 .nav-link-light {
   color: #faf6ef;
@@ -215,18 +239,19 @@ a:hover {
 
 @media (max-width: 600px) {
   .nav-inner {
-    padding: 16px 20px;
-    gap: 8px;
+    padding: 0 20px;
   }
   .nav-links {
-    gap: 18px;
+    gap: 0;
   }
   .nav-link {
-    font-size: 11px;
+    padding: 0 10px;
+    font-size: 13px;
     letter-spacing: 1.5px;
   }
   .nav-wordmark {
     font-size: 17px;
+    letter-spacing: 2px;
   }
 }
 
@@ -242,7 +267,7 @@ a:hover {
 
 .parallax-hero {
   background-image:
-    linear-gradient(180deg, rgba(20, 22, 16, 0.15) 0%, rgba(20, 22, 16, 0.5) 100%),
+    linear-gradient(180deg, rgba(38, 28, 14, 0.2) 0%, rgba(38, 28, 14, 0.55) 100%),
     url("images/hero.jpeg");
   min-height: 100vh;
   position: relative;
@@ -253,7 +278,7 @@ a:hover {
 }
 
 .parallax-about {
-  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.35), rgba(20, 22, 16, 0.35)),
+  background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.4), rgba(38, 28, 14, 0.4)),
     url("images/about.jpeg");
   min-height: 380px;
   position: relative;
@@ -263,13 +288,13 @@ a:hover {
 }
 
 .parallax-inspiration {
-  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.25), rgba(20, 22, 16, 0.25)),
+  background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.3), rgba(38, 28, 14, 0.3)),
     url("images/inspiration.jpeg");
   padding: 110px 32px;
 }
 
 .parallax-contact {
-  background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.35), rgba(20, 22, 16, 0.35)),
+  background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.4), rgba(38, 28, 14, 0.4)),
     url("images/contact.jpeg");
   min-height: 380px;
   position: relative;
@@ -289,8 +314,7 @@ a:hover {
 }
 
 .banner-title {
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-size: 40px;
   color: #faf6ef;
   letter-spacing: 6px;
@@ -299,29 +323,19 @@ a:hover {
 /* ---------------------------------------------------------------------------
    Hero
 --------------------------------------------------------------------------- */
+.hero-inner {
+  transform: translateY(-100px);
+}
 .hero-title {
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-weight: 400;
-  font-size: clamp(42px, 7vw, 84px);
+  font-size: clamp(28px, 4vw, 48px);
   color: #faf6ef;
   letter-spacing: 6px;
   line-height: 1.15;
-}
-.hero-rule {
-  width: 64px;
-  height: 1px;
-  background: var(--gold);
-  margin: 28px auto;
-}
-.hero-pill {
-  display: inline-block;
-  padding: 8px 18px;
-  background: rgba(10, 11, 8, 0.6);
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: #f3eee0;
-  text-transform: uppercase;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.45),
+    0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------------------------------------------------------------------------
@@ -340,22 +354,100 @@ a:hover {
 }
 
 /* ---------------------------------------------------------------------------
-   Shared section bits
+   Buttons — shared hover recipe site-wide: moss text/background/border.
 --------------------------------------------------------------------------- */
-.label-gold {
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 18px;
+.btn {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+.btn:hover {
+  background: var(--moss-bg-1);
+  color: var(--moss);
+  border-color: var(--moss);
 }
 
-/* Welcome */
+.btn-welcome-cta {
+  padding: 14px 36px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  background: transparent;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+.btn-see-more {
+  padding: 12px 28px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  background: transparent;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+}
+.btn-contact-submit {
+  float: right;
+  padding: 14px 40px;
+  background: var(--band-tint);
+  color: var(--forest);
+  border: 1px solid var(--brown);
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+.btn-contact-submit:hover {
+  background: var(--moss-bg-2);
+}
+.btn-footer {
+  display: inline-block;
+  padding: 12px 30px;
+  border: 1px solid var(--brown);
+  color: var(--forest);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.btn-footer-italic {
+  font-style: italic;
+}
+.btn-thankyou {
+  padding: 14px 36px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.italic-text {
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------------------------
+   Welcome
+--------------------------------------------------------------------------- */
 .section-welcome {
   max-width: 720px;
   margin: 0 auto;
   padding: 120px 32px 100px;
   text-align: center;
+}
+.section-welcome-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.section-welcome-heading-text {
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  color: var(--text-body);
 }
 .section-welcome p {
   font-size: 19px;
@@ -366,7 +458,9 @@ a:hover {
   margin-top: 40px;
 }
 
-/* About */
+/* ---------------------------------------------------------------------------
+   About
+--------------------------------------------------------------------------- */
 .section-about {
   max-width: 1100px;
   margin: 0 auto;
@@ -374,33 +468,29 @@ a:hover {
 }
 .about-grid {
   display: flex;
-  align-items: center;
-  gap: 64px;
+  align-items: flex-start;
+  gap: 72px;
   flex-wrap: wrap;
 }
 .about-photo {
-  flex: 1 1 380px;
+  flex: 1 1 340px;
   text-align: center;
+  margin-top: 30px;
 }
-.about-photo-frame {
-  padding: 14px;
-  background: #fff;
-  box-shadow: 0 18px 40px rgba(40, 35, 20, 0.12);
-  display: inline-block;
-}
-.about-photo-frame img {
+.about-photo img {
   height: auto;
   display: block;
+  margin: 0 auto;
+  border-radius: 2px;
 }
 .about-caption {
   margin-top: 18px;
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-size: 20px;
-  color: var(--link);
+  color: var(--brown);
 }
 .about-text {
-  flex: 1 1 420px;
+  flex: 1 1 460px;
 }
 .about-text p {
   font-size: 18px;
@@ -408,47 +498,73 @@ a:hover {
   color: var(--text-body);
 }
 
-/* Inspiration */
+/* ---------------------------------------------------------------------------
+   Inspiration
+--------------------------------------------------------------------------- */
 .inspiration-card {
   max-width: 720px;
   margin: 0 auto;
-  background: var(--cream-card);
+  background: var(--inspiration-card);
   padding: 56px 48px;
   box-shadow: 0 24px 60px rgba(20, 20, 10, 0.25);
-  border-top: 3px solid var(--gold);
-  text-align: center;
+  border-radius: 6px;
+}
+.inspiration-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 }
 .inspiration-title {
-  font-family: "Spectral", serif;
-  font-style: italic;
-  font-size: 30px;
-  color: var(--forest);
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--text-body);
 }
-.inspiration-card p {
+.inspiration-body {
+  text-align: center;
+  margin-top: 24px;
+}
+.inspiration-body p {
   font-size: 18px;
   line-height: 1.85;
   color: var(--text-body);
-  margin-top: 24px;
 }
-.inspiration-rule {
-  width: 48px;
-  height: 1px;
-  background: var(--gold);
-  margin: 28px auto;
+.inspiration-wave {
+  margin: 28px 0;
+  display: flex;
+  justify-content: center;
+}
+.inspiration-wave svg {
+  color: var(--moss);
+  animation: sway 5s ease-in-out infinite;
+  transform-origin: center;
 }
 .inspiration-quote {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 20px;
-  line-height: 1.8;
+  font-style: italic;
   color: var(--text-primary);
 }
 
-/* Land */
+/* ---------------------------------------------------------------------------
+   Land
+--------------------------------------------------------------------------- */
 .section-land {
   max-width: 760px;
   margin: 0 auto;
   padding: 110px 32px;
   text-align: center;
+}
+.section-land-heading {
+  margin-bottom: 18px;
+}
+.section-land-heading-text {
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  color: var(--text-body);
 }
 .section-land p {
   font-size: 18px;
@@ -456,7 +572,9 @@ a:hover {
   color: var(--text-body);
 }
 
-/* Contact / forms (shared with the mini-trip sign-up form) */
+/* ---------------------------------------------------------------------------
+   Contact / forms (shared with the mini-trip sign-up form)
+--------------------------------------------------------------------------- */
 .section-contact {
   max-width: 640px;
   margin: 0 auto;
@@ -467,9 +585,8 @@ a:hover {
 }
 .form-label {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 2px;
-  text-transform: uppercase;
   color: var(--muted-3);
   margin-bottom: 8px;
 }
@@ -482,7 +599,7 @@ a:hover {
   background: transparent;
   padding: 8px 2px;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--text-primary);
   outline: none;
 }
@@ -494,57 +611,21 @@ a:hover {
   overflow: hidden;
 }
 
-.btn {
-  display: inline-block;
-  font-family: "Josefin Sans", sans-serif;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-}
-.btn-outline {
-  padding: 14px 36px;
-  border: 1px solid var(--forest);
-  color: var(--forest);
-  background: transparent;
-  font-size: 13px;
-  letter-spacing: 3px;
-}
-.btn-outline-sm {
-  padding: 12px 28px;
-  border: 1px solid var(--forest);
-  color: var(--forest);
-  background: transparent;
-  font-size: 12px;
-  letter-spacing: 2.5px;
-}
-.btn-solid {
-  float: right;
-  padding: 14px 40px;
-  background: var(--forest);
-  color: var(--cream);
-  font-size: 13px;
-  letter-spacing: 3px;
-}
-
 /* ---------------------------------------------------------------------------
    Footer
 --------------------------------------------------------------------------- */
 .site-footer {
   text-align: center;
-  background: var(--forest-dark);
-  color: #e9e1d2;
+  background: var(--band-tint);
+  color: var(--text-body);
   padding: 80px 32px 56px;
+  border-top: 1px solid var(--gold);
 }
-.btn-footer {
-  display: inline-block;
-  padding: 12px 30px;
-  border: 1px solid var(--gold);
-  color: #e9e1d2;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+.minimal-footer {
+  text-align: center;
+  padding: 32px;
 }
+
 /* ---------------------------------------------------------------------------
    Offerings — trip cards
 --------------------------------------------------------------------------- */
@@ -557,6 +638,13 @@ a:hover {
   text-align: center;
   margin-bottom: 64px;
 }
+.label-gold {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
 .trip-cards {
   display: flex;
   flex-wrap: wrap;
@@ -565,8 +653,9 @@ a:hover {
 }
 .trip-card {
   width: 340px;
-  background: var(--cream-card);
+  background: var(--card-white);
   box-shadow: 0 18px 44px rgba(40, 35, 20, 0.1);
+  border-radius: 6px;
   overflow: hidden;
 }
 .trip-card-image {
@@ -593,8 +682,7 @@ a:hover {
   padding: 32px;
 }
 .trip-card-name {
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-size: 26px;
   color: var(--forest-dark);
 }
@@ -615,7 +703,6 @@ a:hover {
   gap: 8px;
   font-size: 13px;
   letter-spacing: 1px;
-  text-transform: uppercase;
   color: var(--muted-1);
   margin: 6px 0;
 }
@@ -631,7 +718,7 @@ a:hover {
   color: var(--text-body);
   margin: 20px 0 0;
 }
-.trip-card-body .btn-outline-sm {
+.trip-card-body .btn-see-more {
   margin-top: 20px;
 }
 
@@ -646,8 +733,7 @@ a:hover {
   padding: 96px 32px 72px;
 }
 .trip-header-title {
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-size: 44px;
   color: var(--forest-dark);
   letter-spacing: 1px;
@@ -723,6 +809,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 6px;
   box-shadow: 0 18px 44px rgba(40, 35, 20, 0.12);
 }
 @media (max-width: 600px) {
@@ -736,30 +823,6 @@ a:hover {
     height: auto;
     object-fit: initial;
   }
-}
-
-.signup-band {
-  padding: 80px 32px;
-}
-.signup-intro {
-  text-align: center;
-  margin-bottom: 48px;
-}
-.signup-title {
-  font-family: "Spectral", serif;
-  font-style: italic;
-  font-size: 32px;
-  color: var(--forest-dark);
-}
-.signup-intro p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--text-body);
-  margin-top: 14px;
-}
-.signup-form {
-  max-width: 640px;
-  margin: 0 auto;
 }
 
 /* ---------------------------------------------------------------------------
@@ -782,8 +845,7 @@ a:hover {
   max-width: 560px;
 }
 .thankyou-title {
-  font-family: "Spectral", serif;
-  font-style: italic;
+  font-family: "EB Garamond", serif;
   font-size: 40px;
   color: var(--forest-dark);
   margin-bottom: 22px;
@@ -799,7 +861,7 @@ a:hover {
   line-height: 1.8;
   color: var(--text-body);
 }
-.thankyou-content .btn-outline {
+.thankyou-content .btn-thankyou {
   margin-top: 28px;
 }
 

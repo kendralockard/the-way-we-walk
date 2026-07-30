@@ -25,16 +25,20 @@
     return "nav-link " + (key === "offerings" && onOfferings ? "nav-link-active" : "nav-link-dark");
   }
 
-  function render(dark) {
+  function render(dark, wordmarkVisible) {
     var linksHtml = links
       .map(function (l) {
         return '<a href="' + l.href + '" class="' + linkClass(l.key, dark) + '">' + l.label + "</a>";
       })
       .join("");
-    var wordmarkClass = "nav-wordmark " + (dark ? "nav-wordmark-dark" : "nav-wordmark-light");
+    var wordmarkClass =
+      "nav-wordmark " +
+      (dark ? "nav-wordmark-dark" : "nav-wordmark-light") +
+      " " +
+      (wordmarkVisible ? "nav-wordmark-visible" : "nav-wordmark-hidden");
     return (
       '<div class="nav-inner">' +
-      '<a href="' + wordmarkHref + '" class="' + wordmarkClass + '">The Way We Walk</a>' +
+      '<a href="' + wordmarkHref + '" class="' + wordmarkClass + '">the way we walk</a>' +
       '<div class="nav-links">' + linksHtml + "</div>" +
       "</div>"
     );
@@ -44,18 +48,25 @@
   if (!nav) return;
 
   if (onIndex) {
-    // Transparent over the hero, solidifies once scrolled past it.
+    // Transparent over the hero, solidifies once scrolled past it. The
+    // wordmark itself stays invisible until the hero title has scrolled out
+    // of view (20% of viewport height), then fades in.
     nav.className = "site-nav nav-fixed";
-    nav.innerHTML = render(false);
+    nav.innerHTML = render(false, false);
     window.addEventListener("scroll", function () {
       var scrolled = window.scrollY > 80;
-      if (scrolled === nav.classList.contains("scrolled")) return;
+      var pastHero = window.scrollY > window.innerHeight * 0.2;
+      var wasScrolled = nav.classList.contains("scrolled");
+      var wasPastHero = nav.dataset.pastHero === "true";
+      if (scrolled === wasScrolled && pastHero === wasPastHero) return;
       nav.classList.toggle("scrolled", scrolled);
-      nav.innerHTML = render(scrolled);
+      nav.dataset.pastHero = String(pastHero);
+      nav.innerHTML = render(scrolled, pastHero);
     });
   } else {
-    // No hero on interior pages — nav is solid and sticky from the start.
+    // No hero on interior pages — nav is solid and sticky from the start,
+    // wordmark always visible.
     nav.className = "site-nav nav-sticky";
-    nav.innerHTML = render(true);
+    nav.innerHTML = render(true, true);
   }
 })();
