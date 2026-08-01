@@ -52,7 +52,6 @@
 :root {
   --cream: #faf7f0;
   --card-white: #ffffff;
-  --inspiration-card: #fbf3e4;
   --band-tint: #f1ecdf;
   --text-primary: #3a3b33;
   --text-body: #4b4c42;
@@ -67,7 +66,6 @@
   --moss-bg-1: rgba(107, 122, 79, 0.1);
   --moss-bg-2: rgba(107, 122, 79, 0.12);
   --input-line: #c9be9f;
-  --icon-color: #2a2a24;
 }
 
 /* ---------------------------------------------------------------------------
@@ -135,16 +133,14 @@ a:hover {
 }
 
 /* ---------------------------------------------------------------------------
-   Icons — the hand-drawn spiral motif (welcome/inspiration subheads, favicon)
+   Icons — the hand-drawn spiral motif (nav wordmark, hero, favicon). Color
+   is left to inherit from context (nav dark/light state, hero white) rather
+   than fixed, since it now renders on both light and dark backgrounds.
 --------------------------------------------------------------------------- */
 .spiral-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--icon-color);
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
-}
-.spiral-icon-mirror {
-  transform: scaleX(-1);
 }
 
 /* ---------------------------------------------------------------------------
@@ -185,6 +181,9 @@ a:hover {
 }
 
 .nav-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: "EB Garamond", serif;
   font-size: 20px;
   letter-spacing: 3px;
@@ -198,10 +197,13 @@ a:hover {
 .nav-wordmark-dark {
   color: var(--forest);
 }
-.nav-wordmark-hidden {
+
+/* Wordmark+icon and nav links share one reveal trigger — both hidden until
+   scrolled past the hero, then fade in together with the nav background. */
+.nav-reveal-hidden {
   opacity: 0;
 }
-.nav-wordmark-visible {
+.nav-reveal-visible {
   opacity: 1;
 }
 
@@ -210,6 +212,7 @@ a:hover {
   align-items: center;
   gap: 6px;
   height: 100%;
+  transition: opacity 0.4s ease;
 }
 .nav-link {
   display: flex;
@@ -269,11 +272,15 @@ a:hover {
   background-image:
     linear-gradient(180deg, rgba(38, 28, 14, 0.2) 0%, rgba(38, 28, 14, 0.55) 100%),
     url("images/hero.jpeg");
+  /* Tuned to center the three hikers in the source photo while preserving
+     its aspect ratio — do not simplify to cover/center. */
+  background-position: 75% 35%;
+  background-size: 110% auto;
   min-height: 100vh;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   text-align: center;
 }
 
@@ -285,12 +292,6 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.parallax-inspiration {
-  background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.3), rgba(38, 28, 14, 0.3)),
-    url("images/inspiration.jpeg");
-  padding: 110px 32px;
 }
 
 .parallax-contact {
@@ -324,18 +325,28 @@ a:hover {
    Hero
 --------------------------------------------------------------------------- */
 .hero-inner {
-  transform: translateY(-100px);
+  padding: 0 8% 8.5% 0;
+  transition: opacity 0.2s linear;
+}
+.hero-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #faf6ef;
 }
 .hero-title {
   font-family: "EB Garamond", serif;
   font-weight: 400;
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(18px, 2.5vw, 32px);
   color: #faf6ef;
-  letter-spacing: 6px;
+  letter-spacing: 9px;
   line-height: 1.15;
   text-shadow:
     0 2px 20px rgba(0, 0, 0, 0.45),
     0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.hero-spiral {
+  flex-shrink: 0;
 }
 
 /* ---------------------------------------------------------------------------
@@ -436,10 +447,6 @@ a:hover {
   text-align: center;
 }
 .section-welcome-heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
   margin-bottom: 18px;
 }
 .section-welcome-heading-text {
@@ -448,6 +455,15 @@ a:hover {
   font-size: 30px;
   letter-spacing: 0.5px;
   color: var(--text-body);
+}
+.welcome-mountain {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.welcome-mountain img {
+  width: 90px;
+  height: auto;
 }
 .section-welcome p {
   font-size: 19px;
@@ -468,14 +484,13 @@ a:hover {
 }
 .about-grid {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 72px;
   flex-wrap: wrap;
 }
 .about-photo {
   flex: 1 1 340px;
   text-align: center;
-  margin-top: 30px;
 }
 .about-photo img {
   height: auto;
@@ -486,7 +501,8 @@ a:hover {
 .about-caption {
   margin-top: 18px;
   font-family: "EB Garamond", serif;
-  font-size: 20px;
+  font-style: italic;
+  font-size: 17px;
   color: var(--brown);
 }
 .about-text {
@@ -501,41 +517,45 @@ a:hover {
 /* ---------------------------------------------------------------------------
    Inspiration
 --------------------------------------------------------------------------- */
-.inspiration-card {
-  max-width: 720px;
+.section-inspiration {
+  max-width: 1100px;
   margin: 0 auto;
-  background: var(--inspiration-card);
-  padding: 56px 48px;
-  box-shadow: 0 24px 60px rgba(20, 20, 10, 0.25);
-  border-radius: 6px;
+  padding: 110px 32px;
 }
-.inspiration-heading {
+.inspiration-grid {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
+  gap: 72px;
+  flex-wrap: wrap;
+}
+.inspiration-text {
+  flex: 1 1 460px;
+}
+.inspiration-photo {
+  flex: 1 1 380px;
+}
+.inspiration-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
 }
 .inspiration-title {
   font-family: "EB Garamond", serif;
   font-weight: 400;
   font-size: 26px;
   letter-spacing: 2px;
-  text-align: center;
   color: var(--text-body);
 }
-.inspiration-body {
-  text-align: center;
-  margin-top: 24px;
-}
-.inspiration-body p {
+.inspiration-text p {
   font-size: 18px;
   line-height: 1.85;
   color: var(--text-body);
+  margin-top: 24px;
 }
 .inspiration-wave {
   margin: 28px 0;
   display: flex;
-  justify-content: center;
 }
 .inspiration-wave svg {
   color: var(--moss);
@@ -553,7 +573,7 @@ a:hover {
 .section-land {
   max-width: 760px;
   margin: 0 auto;
-  padding: 110px 32px;
+  padding: 110px 32px 150px;
   text-align: center;
 }
 .section-land-heading {
@@ -872,7 +892,6 @@ a:hover {
 @media only screen and (max-width: 768px) {
   .parallax-hero,
   .parallax-about,
-  .parallax-inspiration,
   .parallax-contact,
   .parallax-offerings {
     background-attachment: scroll;
@@ -880,13 +899,11 @@ a:hover {
   .parallax-hero {
     min-height: 100vh;
     background-position: center 65%;
+    background-size: cover;
   }
   .parallax-about {
     min-height: 320px;
     background-position: center 35%;
-  }
-  .parallax-inspiration {
-    background-position: center 60%;
   }
   .parallax-contact {
     min-height: 320px;
