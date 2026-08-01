@@ -11,11 +11,12 @@
   var onIndex = page === "" || page === "index.html";
   var home = onIndex ? "" : prefix + "index.html";
   var onOfferings = page === "offerings.html" || dirs.indexOf("trips") !== -1;
+  var onContact = page === "contact.html";
 
   var links = [
     { key: "offerings", label: "offerings", href: prefix + "offerings.html" },
     { key: "about", label: "about", href: home + "#about" },
-    { key: "contact", label: "contact", href: home + "#contact" },
+    { key: "contact", label: "contact", href: prefix + "contact.html" },
   ];
 
   var wordmarkHref = onIndex ? "#home" : home;
@@ -25,7 +26,8 @@
 
   function linkClass(key, dark) {
     if (!dark) return "nav-link nav-link-light";
-    return "nav-link " + (key === "offerings" && onOfferings ? "nav-link-active" : "nav-link-dark");
+    var active = (key === "offerings" && onOfferings) || (key === "contact" && onContact);
+    return "nav-link " + (active ? "nav-link-active" : "nav-link-dark");
   }
 
   function render(dark, revealed) {
