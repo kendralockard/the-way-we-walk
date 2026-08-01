@@ -20,3 +20,18 @@
     observer.observe(el);
   });
 })();
+
+// Hero title fades out quickly on scroll — fully gone within ~10% of a
+// viewport height.
+(function () {
+  var heroInner = document.querySelector(".hero-inner");
+  if (!heroInner) return;
+
+  function update() {
+    var opacity = Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.1));
+    heroInner.style.opacity = opacity;
+  }
+
+  window.addEventListener("scroll", update);
+  update();
+})();
