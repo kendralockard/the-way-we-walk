@@ -137,9 +137,9 @@
   if (onIndex) {
     // Transparent over the hero, solidifies once scrolled past it. The
     // wordmark+icon, the nav links, and the hamburger all stay invisible
-    // together until the hero title has scrolled out of view (20% of
-    // viewport height), then fade in together with the background — one
-    // shared trigger, no earlier partial transition.
+    // together until scrolled 20% of a viewport height down, then fade in
+    // together with the background — one shared trigger, no earlier
+    // partial transition.
     nav.className = "site-nav nav-fixed";
     window.addEventListener("scroll", function () {
       var pastHero = window.scrollY > window.innerHeight * 0.2;

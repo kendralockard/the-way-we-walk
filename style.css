@@ -385,20 +385,52 @@ a:hover {
   background-size: cover;
 }
 
-.parallax-hero {
-  background-image:
-    linear-gradient(180deg, rgba(38, 28, 14, 0.2) 0%, rgba(38, 28, 14, 0.55) 100%),
-    url("images/hero.jpeg");
-  /* Tuned to center the three hikers in the source photo while preserving
-     its aspect ratio — do not simplify to cover/center. */
-  background-position: 75% 35%;
-  background-size: 105% auto;
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+/* Full-width band behind the hero photo, in the footer's tan tint —
+   shows through above the (nav-height) gap and on the sides once the
+   photo hits its own max-width below. */
+/* Big wordmark shown at the very top of the page, above the hero photo.
+   Static — no fade/scroll behavior of its own, unlike the nav below it. */
+.hero-title-band {
+  background: var(--cream);
+  padding: 40px 32px 20px;
   text-align: center;
+}
+.hero-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hero-title {
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
+  font-weight: 400;
+  font-size: clamp(28px, 5vw, 60px);
+  color: var(--text-body);
+  line-height: 1;
+}
+
+.hero-band {
+  background: var(--band-tint);
+}
+
+.parallax-hero {
+  background-image: url("images/hero.jpeg");
+  /* Box is slightly shorter than the photo's native aspect ratio
+     (2160x1620, 4:3) so `cover` (inherited from .parallax-band) crops a
+     bit off the bottom rather than showing the full photo — anchored to
+     the top so nothing is cropped from the top. That only computes
+     correctly against this element's own box, not the viewport, so this
+     also drops the parallax fixed-attachment effect. */
+  background-attachment: scroll;
+  background-position: center top;
+  aspect-ratio: 2160 / 1450;
+  /* Capped at the photo's native width so it's never upscaled past its
+     actual resolution (and blurry) on a wide viewport/monitor. */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .parallax-about {
@@ -455,45 +487,6 @@ a:hover {
   text-shadow: none;
 }
 
-/* ---------------------------------------------------------------------------
-   Hero
---------------------------------------------------------------------------- */
-.hero-inner {
-  padding: 0 0 35% 5%;
-  transition: opacity 0.2s linear;
-}
-.hero-title-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #faf6ef;
-}
-.hero-title {
-  font-family: "Orange Avenue", "EB Garamond", serif;
-  font-feature-settings: "liga" 1, "dlig" 1;
-  font-weight: 400;
-  font-size: clamp(22px, 3vw, 40px);
-  color: #faf6ef;
-  line-height: 1;
-  text-shadow:
-    0 2px 20px rgba(0, 0, 0, 0.6),
-    0 1px 4px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 0, 0, 0.4);
-}
-.hero-spiral {
-  flex-shrink: 0;
-}
-
-/* Desktop only: anchor the title to the bottom-right instead of centered. */
-@media (min-width: 769px) {
-  .parallax-hero {
-    align-items: flex-end;
-    justify-content: flex-end;
-  }
-  .hero-inner {
-    padding: 0 8% 8% 0;
-  }
-}
 
 /* ---------------------------------------------------------------------------
    Scroll reveal (home page only)
@@ -1057,16 +1050,8 @@ a:hover {
    back to normal scroll-attachment, same as the previous design.
 --------------------------------------------------------------------------- */
 @media only screen and (max-width: 768px) {
-  .parallax-hero,
   .parallax-about {
     background-attachment: scroll;
-  }
-  .parallax-hero {
-    min-height: 100vh;
-    background-position: 54% 65%;
-    background-size: cover;
-  }
-  .parallax-about {
     min-height: 320px;
     background-position: center 35%;
   }
