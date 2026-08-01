@@ -253,21 +253,125 @@ a:hover {
   color: var(--forest);
 }
 
+/* Hamburger — hidden above 600px, where the inline .nav-links row is used
+   instead. Bars use currentColor so the light/dark variants match the
+   wordmark/link color swap. Closing is handled by the drawer's own close
+   button/backdrop, so this never needs an open/X state of its own. */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+}
+.nav-hamburger-light {
+  color: #faf6ef;
+}
+.nav-hamburger-dark {
+  color: var(--text-body);
+}
+
+/* Backdrop dims the page behind the drawer; tapping it closes the drawer. */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 10, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 25;
+}
+.nav-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer slides in from the right, always solid regardless of the nav's
+   own transparent/scrolled state. This is a stable DOM node (see navbar.js)
+   — only .open is ever toggled on it, it's never recreated, which is what
+   lets the transform transition actually animate. */
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 84vw);
+  display: flex;
+  flex-direction: column;
+  background: #faf6ef;
+  box-shadow: -4px 0 24px rgba(30, 25, 10, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 30;
+}
+.nav-drawer.open {
+  transform: translateX(0);
+}
+.nav-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 20px;
+  border-bottom: 1px solid rgba(107, 90, 58, 0.1);
+}
+.nav-drawer-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+.nav-drawer-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--brown);
+  padding: 4px 6px;
+  margin: -4px -6px;
+}
+.nav-drawer-links {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  overflow-y: auto;
+}
+.nav-drawer-links a {
+  padding: 16px 12px;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: var(--text-body);
+  border-bottom: 1px solid rgba(107, 90, 58, 0.08);
+}
+.nav-drawer-links a:hover {
+  color: var(--moss);
+}
+
 @media (max-width: 600px) {
   .nav-inner {
     padding: 0 20px;
   }
   .nav-links {
-    gap: 0;
+    display: none;
   }
-  .nav-link {
-    padding: 0 10px;
-    font-size: 13px;
-    letter-spacing: 1.5px;
+  .nav-hamburger {
+    display: flex;
   }
   .nav-wordmark {
     font-size: 17px;
-    letter-spacing: 2px;
   }
 }
 
@@ -292,8 +396,8 @@ a:hover {
   min-height: 100vh;
   position: relative;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -339,7 +443,6 @@ a:hover {
    Hero
 --------------------------------------------------------------------------- */
 .hero-inner {
-  padding: 0 12% 8.5% 0;
   transition: opacity 0.2s linear;
 }
 .hero-title-row {
@@ -352,7 +455,7 @@ a:hover {
   font-family: "Orange Avenue", "EB Garamond", serif;
   font-feature-settings: "liga" 1, "dlig" 1;
   font-weight: 400;
-  font-size: clamp(18px, 2.5vw, 32px);
+  font-size: clamp(22px, 3vw, 40px);
   color: #faf6ef;
   line-height: 1;
   text-shadow:
@@ -705,6 +808,7 @@ a:hover {
 }
 .trip-card {
   width: 340px;
+  max-width: 100%;
   background: var(--card-white);
   box-shadow: 0 18px 44px rgba(40, 35, 20, 0.1);
   border-radius: 6px;
@@ -932,7 +1036,7 @@ a:hover {
   }
   .parallax-hero {
     min-height: 100vh;
-    background-position: center 65%;
+    background-position: 54% 65%;
     background-size: cover;
   }
   .parallax-about {
@@ -946,5 +1050,46 @@ a:hover {
   .parallax-offerings {
     min-height: 320px;
     background-position: center 55%;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Mobile: tighter section padding — the desktop numbers read as excessive
+   whitespace on a phone-height viewport.
+--------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .section-welcome {
+    padding: 72px 24px 56px;
+  }
+  .section-about,
+  .section-inspiration,
+  .section-contact {
+    padding: 72px 24px;
+  }
+  .about-grid,
+  .inspiration-grid {
+    gap: 40px;
+  }
+  .section-land {
+    padding: 72px 24px 96px;
+  }
+  .section-offerings {
+    padding: 64px 24px;
+  }
+  .trip-header {
+    padding: 64px 24px 48px;
+  }
+  .trip-glance {
+    gap: 40px;
+    padding: 40px 24px 0;
+  }
+  .trip-rule-wrap {
+    padding: 40px 24px;
+  }
+  .trip-what-wrap {
+    padding: 0 24px 64px;
+  }
+  .site-footer {
+    padding: 48px 24px 32px;
   }
 }
