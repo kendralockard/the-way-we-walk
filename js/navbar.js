@@ -65,6 +65,7 @@
     "</div>";
 
   var wordmarkEl = nav.querySelector(".nav-wordmark");
+  var navLinksEl = nav.querySelector(".nav-links");
   var linkEls = nav.querySelectorAll(".nav-links a");
   var hamburgerEl = nav.querySelector(".nav-hamburger");
   var drawerEl = nav.querySelector(".nav-drawer");
@@ -78,6 +79,7 @@
     var dark = state.dark;
     var revealClass = state.revealed ? " nav-reveal-visible" : " nav-reveal-hidden";
     wordmarkEl.className = "nav-wordmark " + (dark ? "nav-wordmark-dark" : "nav-wordmark-light") + revealClass;
+    navLinksEl.className = "nav-links" + revealClass;
     linkEls.forEach(function (a) {
       a.className = linkClass(a.dataset.key, dark);
     });

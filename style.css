@@ -414,7 +414,10 @@ a:hover {
 .parallax-contact {
   background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.4), rgba(38, 28, 14, 0.4)),
     url("images/contact.jpeg");
-  background-position: center 60%;
+  /* No parallax here — plain scroll attachment keeps size/position
+     resolving against this local 380px band (not the viewport). */
+  background-attachment: scroll;
+  background-position: center 47%;
   min-height: 380px;
   position: relative;
   display: flex;
@@ -425,6 +428,12 @@ a:hover {
 .parallax-offerings {
   background-image: linear-gradient(180deg, rgba(20, 22, 16, 0.35), rgba(20, 22, 16, 0.35)),
     url("images/offerings.jpg");
+  /* No parallax here — plain scroll attachment keeps size/position
+     resolving against this local 380px band (not the viewport), so cover
+     ends up width-constrained with plenty of vertical slack to move
+     within, unlike the other, still-parallax bands. */
+  background-attachment: scroll;
+  background-position: center 40%;
   min-height: 380px;
   position: relative;
   display: flex;
@@ -442,8 +451,7 @@ a:hover {
     0 1px 4px rgba(0, 0, 0, 0.5),
     0 0 30px rgba(0, 0, 0, 0.4);
 }
-.parallax-about .banner-title,
-.parallax-contact .banner-title {
+.parallax-about .banner-title {
   text-shadow: none;
 }
 
@@ -1050,9 +1058,7 @@ a:hover {
 --------------------------------------------------------------------------- */
 @media only screen and (max-width: 768px) {
   .parallax-hero,
-  .parallax-about,
-  .parallax-contact,
-  .parallax-offerings {
+  .parallax-about {
     background-attachment: scroll;
   }
   .parallax-hero {
@@ -1066,11 +1072,9 @@ a:hover {
   }
   .parallax-contact {
     min-height: 320px;
-    background-position: center 50%;
   }
   .parallax-offerings {
     min-height: 320px;
-    background-position: center 55%;
   }
 }
 
