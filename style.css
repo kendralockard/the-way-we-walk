@@ -396,7 +396,7 @@ a:hover {
   min-height: 100vh;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
 }
@@ -437,12 +437,21 @@ a:hover {
   font-feature-settings: "liga" 1, "dlig" 1;
   font-size: 40px;
   color: #faf6ef;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.6),
+    0 1px 4px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 0, 0, 0.4);
+}
+.parallax-about .banner-title,
+.parallax-contact .banner-title {
+  text-shadow: none;
 }
 
 /* ---------------------------------------------------------------------------
    Hero
 --------------------------------------------------------------------------- */
 .hero-inner {
+  padding: 0 0 35% 5%;
   transition: opacity 0.2s linear;
 }
 .hero-title-row {
@@ -459,11 +468,23 @@ a:hover {
   color: #faf6ef;
   line-height: 1;
   text-shadow:
-    0 2px 20px rgba(0, 0, 0, 0.45),
-    0 1px 4px rgba(0, 0, 0, 0.3);
+    0 2px 20px rgba(0, 0, 0, 0.6),
+    0 1px 4px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 0, 0, 0.4);
 }
 .hero-spiral {
   flex-shrink: 0;
+}
+
+/* Desktop only: anchor the title to the bottom-right instead of centered. */
+@media (min-width: 769px) {
+  .parallax-hero {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .hero-inner {
+    padding: 0 8% 8% 0;
+  }
 }
 
 /* ---------------------------------------------------------------------------
