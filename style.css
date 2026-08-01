@@ -1,8 +1,16 @@
 /* ---------------------------------------------------------------------------
-   Fonts. EB Garamond (display/headline face) is loaded via Google Fonts in
-   each page's <head>. Josefin Sans (body & UI text) is self-hosted, see
-   fonts/josefin-sans.
+   Fonts. Orange Avenue (display/headline face) is self-hosted, see fonts/.
+   EB Garamond (loaded via Google Fonts in each page's <head>) stays wired in
+   as a fallback in case the demo font fails to load. Josefin Sans (body &
+   UI text) is self-hosted, see fonts/josefin-sans.
 --------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Orange Avenue";
+  src: url("fonts/OrangeAvenueDEMO-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Josefin Sans";
   src: url("fonts/josefin-sans/JosefinSans-Light.ttf") format("truetype");
@@ -119,7 +127,8 @@ a:hover {
 }
 
 .serif {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
 }
 
 @keyframes sway {
@@ -141,6 +150,9 @@ a:hover {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+  /* Orange Avenue's caps sit visually higher in their line box than the
+     flex-centered icon, so nudge the icon up to match. */
+  transform: translateY(-2px);
 }
 
 /* ---------------------------------------------------------------------------
@@ -184,9 +196,10 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-size: 20px;
-  letter-spacing: 3px;
+  line-height: 1;
   transition:
     color 0.4s ease,
     opacity 0.4s ease;
@@ -316,17 +329,17 @@ a:hover {
 }
 
 .banner-title {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-size: 40px;
   color: #faf6ef;
-  letter-spacing: 6px;
 }
 
 /* ---------------------------------------------------------------------------
    Hero
 --------------------------------------------------------------------------- */
 .hero-inner {
-  padding: 0 8% 8.5% 0;
+  padding: 0 12% 8.5% 0;
   transition: opacity 0.2s linear;
 }
 .hero-title-row {
@@ -336,12 +349,12 @@ a:hover {
   color: #faf6ef;
 }
 .hero-title {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-weight: 400;
   font-size: clamp(18px, 2.5vw, 32px);
   color: #faf6ef;
-  letter-spacing: 9px;
-  line-height: 1.15;
+  line-height: 1;
   text-shadow:
     0 2px 20px rgba(0, 0, 0, 0.45),
     0 1px 4px rgba(0, 0, 0, 0.3);
@@ -436,10 +449,10 @@ a:hover {
   margin-bottom: 18px;
 }
 .section-welcome-heading-text {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-weight: 400;
   font-size: 30px;
-  letter-spacing: 0.5px;
   color: var(--text-body);
 }
 .welcome-mountain {
@@ -486,7 +499,8 @@ a:hover {
 }
 .about-caption {
   margin-top: 18px;
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-style: italic;
   font-size: 17px;
   color: var(--brown);
@@ -527,10 +541,10 @@ a:hover {
   border-radius: 2px;
 }
 .inspiration-title {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-weight: 400;
   font-size: 26px;
-  letter-spacing: 2px;
   color: var(--text-body);
 }
 .inspiration-text p {
@@ -566,10 +580,10 @@ a:hover {
   margin-bottom: 18px;
 }
 .section-land-heading-text {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-weight: 400;
   font-size: 32px;
-  letter-spacing: 1.5px;
   color: var(--text-body);
 }
 .section-land p {
@@ -636,10 +650,15 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-size: 18px;
-  letter-spacing: 2px;
+  line-height: 1;
   color: var(--brown);
+}
+.footer-wordmark svg {
+  flex-shrink: 0;
+  transform: translateY(-2px);
 }
 .footer-tagline {
   font-size: 14px;
@@ -715,8 +734,9 @@ a:hover {
   padding: 32px;
 }
 .trip-card-name {
-  font-family: "EB Garamond", serif;
-  font-size: 26px;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: normal;
+  font-size: 21px;
   color: var(--forest-dark);
 }
 .trip-card-detail {
@@ -766,10 +786,10 @@ a:hover {
   padding: 96px 32px 72px;
 }
 .trip-header-title {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: normal;
   font-size: 44px;
   color: var(--forest-dark);
-  letter-spacing: 1px;
 }
 .trip-header-subtitle {
   font-size: 16px;
@@ -878,7 +898,8 @@ a:hover {
   max-width: 560px;
 }
 .thankyou-title {
-  font-family: "EB Garamond", serif;
+  font-family: "Orange Avenue", "EB Garamond", serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
   font-size: 40px;
   color: var(--forest-dark);
   margin-bottom: 22px;
