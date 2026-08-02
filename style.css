@@ -1,8 +1,8 @@
 /* ---------------------------------------------------------------------------
    Fonts. Orange Avenue (display/headline face) is self-hosted, see fonts/.
    EB Garamond (loaded via Google Fonts in each page's <head>) stays wired in
-   as a fallback in case the demo font fails to load. Josefin Sans (body &
-   UI text) is self-hosted, see fonts/josefin-sans.
+   as a fallback in case the demo font fails to load. OpenDyslexic (body &
+   UI text) is self-hosted, see fonts/OpenDyslexic-Regular.otf.
 --------------------------------------------------------------------------- */
 @font-face {
   font-family: "Orange Avenue";
@@ -12,45 +12,10 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-LightItalic.ttf") format("truetype");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-Regular.ttf") format("truetype");
+  font-family: "OpenDyslexic";
+  src: url("fonts/OpenDyslexic-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans/JosefinSans-SemiBoldItalic.ttf") format("truetype");
-  font-weight: 600;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -92,8 +57,8 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 17px;
+  font-family: "OpenDyslexic", sans-serif;
+  font-size: 15px;
   line-height: 1.6;
   color: var(--text-primary);
   /* Explicit, since a top-level tab defaults unstyled areas to opaque white
@@ -233,7 +198,7 @@ a:hover {
   height: 100%;
   box-sizing: border-box;
   padding: 0 14px;
-  font-size: 15px;
+  font-size: 12px;
   letter-spacing: 2px;
   transition:
     color 0.3s ease,
@@ -351,7 +316,7 @@ a:hover {
 }
 .nav-drawer-links a {
   padding: 16px 12px;
-  font-size: 15px;
+  font-size: 12px;
   letter-spacing: 1.5px;
   color: var(--text-body);
   border-bottom: 1px solid rgba(107, 90, 58, 0.08);
@@ -490,7 +455,7 @@ a:hover {
 --------------------------------------------------------------------------- */
 .btn {
   display: inline-block;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "OpenDyslexic", sans-serif;
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
@@ -510,7 +475,7 @@ a:hover {
   border: 1px solid var(--forest);
   color: var(--forest);
   background: transparent;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 1.5px;
 }
@@ -572,7 +537,7 @@ a:hover {
   height: auto;
 }
 .section-welcome p {
-  font-size: 19px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--text-body);
 }
@@ -616,7 +581,7 @@ a:hover {
   flex: 1 1 460px;
 }
 .about-text p {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.85;
   color: var(--text-body);
 }
@@ -655,7 +620,7 @@ a:hover {
   color: var(--text-body);
 }
 .inspiration-text p {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.85;
   color: var(--text-body);
   margin-top: 24px;
@@ -694,7 +659,7 @@ a:hover {
   color: var(--text-body);
 }
 .section-land p {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--text-body);
 }
@@ -725,8 +690,8 @@ a:hover {
   border-bottom: 1px solid var(--input-line);
   background: transparent;
   padding: 8px 2px;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
+  font-family: "OpenDyslexic", sans-serif;
+  font-size: 15px;
   color: var(--text-primary);
   outline: none;
 }
@@ -768,7 +733,7 @@ a:hover {
   transform: translateY(-2px);
 }
 .footer-tagline {
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.5px;
   color: var(--muted-3);
   margin-top: 10px;
@@ -874,7 +839,7 @@ a:hover {
   color: var(--gold);
 }
 .trip-desc {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.75;
   color: var(--text-body);
   margin: 20px 0 0;
@@ -905,7 +870,7 @@ a:hover {
   margin-top: 8px;
 }
 .trip-header-tagline {
-  font-size: 19px;
+  font-size: 16px;
   font-style: italic;
   color: var(--text-body);
   margin-top: 20px;
@@ -929,7 +894,7 @@ a:hover {
   margin-bottom: 10px;
 }
 .trip-glance-value {
-  font-size: 17px;
+  font-size: 15px;
   color: var(--text-primary);
 }
 
@@ -959,7 +924,7 @@ a:hover {
   flex: 6 1 400px;
 }
 .trip-what-text p {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.85;
   color: var(--text-body);
 }
@@ -1019,7 +984,7 @@ a:hover {
   margin: 0 auto 28px;
 }
 .thankyou-content p {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.8;
   color: var(--text-body);
 }
