@@ -22,7 +22,6 @@
   var wordmarkHref = onIndex ? "#home" : home;
 
   var links = [
-    { key: "home", label: "home", href: wordmarkHref },
     { key: "offerings", label: "offerings", href: prefix + "offerings.html" },
     { key: "about", label: "about", href: home + "#about" },
     { key: "contact", label: "contact", href: prefix + "contact.html" },
@@ -30,7 +29,7 @@
 
   function linkClass(key, dark) {
     if (!dark) return "nav-link nav-link-light";
-    var active = (key === "home" && onIndex) || (key === "offerings" && onOfferings) || (key === "contact" && onContact);
+    var active = (key === "offerings" && onOfferings) || (key === "contact" && onContact);
     return "nav-link " + (active ? "nav-link-active" : "nav-link-dark");
   }
 
