@@ -1,19 +1,11 @@
 /* ---------------------------------------------------------------------------
    Fonts. Orange Avenue (display/headline face) is self-hosted, see fonts/.
-   EB Garamond (loaded via Google Fonts in each page's <head>) stays wired in
-   as a fallback in case the demo font fails to load. OpenDyslexic (body &
-   UI text) is self-hosted, see fonts/OpenDyslexic-Regular.otf.
+   EB Garamond (body & UI text, plus the headline fallback) is loaded via
+   Google Fonts in each page's <head>.
 --------------------------------------------------------------------------- */
 @font-face {
   font-family: "Orange Avenue";
   src: url("fonts/OrangeAvenueDEMO-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "OpenDyslexic";
-  src: url("fonts/OpenDyslexic-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -39,6 +31,7 @@
   --moss-bg-1: rgba(107, 122, 79, 0.1);
   --moss-bg-2: rgba(107, 122, 79, 0.12);
   --input-line: #c9be9f;
+  --inspiration-card: rgba(251, 243, 228, 0.88);
 }
 
 /* ---------------------------------------------------------------------------
@@ -57,8 +50,8 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-family: "OpenDyslexic", sans-serif;
-  font-size: 15px;
+  font-family: "EB Garamond", serif;
+  font-size: 17px;
   line-height: 1.6;
   color: var(--text-primary);
   /* Explicit, since a top-level tab defaults unstyled areas to opaque white
@@ -198,7 +191,7 @@ a:hover {
   height: 100%;
   box-sizing: border-box;
   padding: 0 14px;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 2px;
   transition:
     color 0.3s ease,
@@ -316,7 +309,7 @@ a:hover {
 }
 .nav-drawer-links a {
   padding: 16px 12px;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 1.5px;
   color: var(--text-body);
   border-bottom: 1px solid rgba(107, 90, 58, 0.08);
@@ -401,6 +394,12 @@ a:hover {
   justify-content: center;
 }
 
+.parallax-inspiration {
+  background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.3), rgba(38, 28, 14, 0.3)),
+    url("images/inspiration.jpeg");
+  padding: 110px 32px;
+}
+
 .parallax-contact {
   background-image: linear-gradient(180deg, rgba(38, 28, 14, 0.4), rgba(38, 28, 14, 0.4)),
     url("images/contact.jpeg");
@@ -466,7 +465,7 @@ a:hover {
 --------------------------------------------------------------------------- */
 .btn {
   display: inline-block;
-  font-family: "OpenDyslexic", sans-serif;
+  font-family: "EB Garamond", serif;
   text-decoration: none;
   cursor: pointer;
   border-radius: 4px;
@@ -486,7 +485,8 @@ a:hover {
   border: 1px solid var(--forest);
   color: var(--forest);
   background: transparent;
-  font-size: 15px;
+  font-size: 17px;
+  font-style: italic;
   font-weight: 600;
   letter-spacing: 1.5px;
 }
@@ -548,7 +548,7 @@ a:hover {
   height: auto;
 }
 .section-welcome p {
-  font-size: 15px;
+  font-size: 19px;
   line-height: 1.9;
   color: var(--text-body);
 }
@@ -592,7 +592,7 @@ a:hover {
   flex: 1 1 460px;
 }
 .about-text p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.85;
   color: var(--text-body);
 }
@@ -600,45 +600,41 @@ a:hover {
 /* ---------------------------------------------------------------------------
    Inspiration
 --------------------------------------------------------------------------- */
-.section-inspiration {
-  max-width: 1100px;
+.inspiration-card {
+  max-width: 720px;
   margin: 0 auto;
-  padding: 110px 32px;
+  background: var(--inspiration-card);
+  padding: 56px 48px;
+  box-shadow: 0 24px 60px rgba(20, 20, 10, 0.25);
+  border-radius: 6px;
 }
-.inspiration-grid {
+.inspiration-heading {
   display: flex;
   align-items: center;
-  gap: 72px;
-  flex-wrap: wrap;
-}
-.inspiration-text {
-  flex: 1 1 460px;
-}
-.inspiration-photo {
-  flex: 1 1 380px;
-}
-.inspiration-photo img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 2px;
+  justify-content: center;
+  gap: 14px;
 }
 .inspiration-title {
   font-family: "Orange Avenue", "EB Garamond", serif;
   font-feature-settings: "liga" 1, "dlig" 1;
   font-weight: 400;
   font-size: 26px;
+  text-align: center;
   color: var(--text-body);
 }
-.inspiration-text p {
-  font-size: 15px;
+.inspiration-body {
+  text-align: center;
+  margin-top: 24px;
+}
+.inspiration-body p {
+  font-size: 18px;
   line-height: 1.85;
   color: var(--text-body);
-  margin-top: 24px;
 }
 .inspiration-wave {
   margin: 28px 0;
   display: flex;
+  justify-content: center;
 }
 .inspiration-wave svg {
   color: var(--moss);
@@ -670,7 +666,7 @@ a:hover {
   color: var(--text-body);
 }
 .section-land p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.9;
   color: var(--text-body);
 }
@@ -701,8 +697,8 @@ a:hover {
   border-bottom: 1px solid var(--input-line);
   background: transparent;
   padding: 8px 2px;
-  font-family: "OpenDyslexic", sans-serif;
-  font-size: 15px;
+  font-family: "EB Garamond", serif;
+  font-size: 18px;
   color: var(--text-primary);
   outline: none;
 }
@@ -850,7 +846,7 @@ a:hover {
   color: var(--gold);
 }
 .trip-desc {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.75;
   color: var(--text-body);
   margin: 20px 0 0;
@@ -881,7 +877,7 @@ a:hover {
   margin-top: 8px;
 }
 .trip-header-tagline {
-  font-size: 16px;
+  font-size: 19px;
   font-style: italic;
   color: var(--text-body);
   margin-top: 20px;
@@ -905,7 +901,7 @@ a:hover {
   margin-bottom: 10px;
 }
 .trip-glance-value {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-primary);
 }
 
@@ -935,7 +931,7 @@ a:hover {
   flex: 6 1 400px;
 }
 .trip-what-text p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.85;
   color: var(--text-body);
 }
@@ -995,7 +991,7 @@ a:hover {
   margin: 0 auto 28px;
 }
 .thankyou-content p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.8;
   color: var(--text-body);
 }
@@ -1009,7 +1005,8 @@ a:hover {
 --------------------------------------------------------------------------- */
 @media only screen and (max-width: 768px) {
   .parallax-hero,
-  .parallax-about {
+  .parallax-about,
+  .parallax-inspiration {
     background-attachment: scroll;
   }
   .parallax-hero {
@@ -1020,6 +1017,9 @@ a:hover {
   .parallax-about {
     min-height: 320px;
     background-position: center 35%;
+  }
+  .parallax-inspiration {
+    background-position: center 60%;
   }
   .parallax-contact {
     min-height: 320px;
@@ -1038,13 +1038,14 @@ a:hover {
     padding: 72px 24px 56px;
   }
   .section-about,
-  .section-inspiration,
   .section-contact {
     padding: 72px 24px;
   }
-  .about-grid,
-  .inspiration-grid {
+  .about-grid {
     gap: 40px;
+  }
+  .inspiration-card {
+    padding: 40px 24px;
   }
   .section-land {
     padding: 72px 24px 96px;
