@@ -4,6 +4,7 @@
 // `image` is optional — leave it as "" to show the diagonal-stripe placeholder.
 // `detail` is optional — a second line shown below the name on the card.
 // `page` is the path to the trip's detail page, relative to the site root.
+// `status` is "current" or "past" — it decides which section the card lands in.
 // ---------------------------------------------------------------------------
 var trips = [
   {
@@ -15,6 +16,7 @@ var trips = [
       "A week full of day trips exploring the Bay Area.  Offered to young ones aged 5 to 10.",
     image: "images/mini-trip-for-kids-2.jpeg",
     page: "trips/mini-trip.html",
+    status: "past",
   },
   {
     name: "Topographic Map and Compass Navigation Class",
@@ -24,15 +26,18 @@ var trips = [
       "Come and learn how to situate yourself in relationship to the land using a topographic map and compass.",
     image: "images/topo-map-compass.jpeg",
     page: "trips/topographic-map-compass.html",
+    status: "current",
   },
 ];
 
 (function () {
-  var cards = document.getElementById("trip-cards");
+  var currentCards = document.getElementById("trip-cards-current");
+  var pastCards = document.getElementById("trip-cards-past");
   var template = document.getElementById("trip-card-template");
-  if (!cards || !template) return; // not on the offerings page
+  if (!currentCards || !pastCards || !template) return; // not on the offerings page
 
   trips.forEach(function (trip) {
+    var cards = trip.status === "past" ? pastCards : currentCards;
     var card = template.content.cloneNode(true).firstElementChild;
     var img = card.querySelector(".trip-card-image");
     var placeholder = card.querySelector(".trip-card-placeholder");

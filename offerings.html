@@ -29,13 +29,20 @@
     <!-- Intro -->
     <div class="section-offerings" id="offerings">
       <div class="offerings-intro">
-        <div class="label-gold">past offerings</div>
+        <div class="label-gold">current offerings</div>
       </div>
 
       <!-- Trip cards are rendered by the script at the bottom of this page,
            from the `trips` array. To add/edit/remove a trip, edit that one
-           list — you don't need to touch the markup here. -->
-      <div class="trip-cards" id="trip-cards"></div>
+           list — you don't need to touch the markup here. Each trip's
+           `status` ("current" or "past") decides which section it lands in. -->
+      <div class="trip-cards" id="trip-cards-current"></div>
+
+      <div class="offerings-intro offerings-intro-past">
+        <div class="label-gold">past offerings</div>
+      </div>
+
+      <div class="trip-cards" id="trip-cards-past"></div>
 
       <template id="trip-card-template">
         <div class="trip-card">

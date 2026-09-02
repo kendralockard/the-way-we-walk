@@ -679,6 +679,9 @@ a:hover {
   margin: 0 auto;
   padding: 110px 32px;
 }
+.signup-band {
+  background: var(--card-white);
+}
 .form-field {
   margin-bottom: 24px;
 }
@@ -782,6 +785,9 @@ a:hover {
 .offerings-intro {
   text-align: center;
   margin-bottom: 64px;
+}
+.offerings-intro-past {
+  margin-top: 96px;
 }
 .label-gold {
   font-size: 13px;
