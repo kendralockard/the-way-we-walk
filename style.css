@@ -705,6 +705,20 @@ a:hover {
 .form-textarea {
   resize: vertical;
 }
+.form-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.form-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "EB Garamond", serif;
+  font-size: 18px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
 .form-actions {
   margin-top: 8px;
   overflow: hidden;

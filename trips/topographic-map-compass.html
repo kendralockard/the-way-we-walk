@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Topographic Map and Compass Navigation Class — The Way We Walk</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><rect width='20' height='20' rx='4' fill='%23FAF7F0'/><path d='M10.00,9.20 L10.29,9.09 L10.65,9.10 L11.02,9.26 L11.35,9.56 L11.57,10.00 L11.64,10.53 L11.52,11.10 L11.19,11.64 L10.68,12.08 L10.00,12.34 L9.23,12.37 L8.44,12.14 L7.73,11.65 L7.19,10.91 L6.89,10.00 L6.90,8.99 L7.23,7.99 L7.90,7.11 L8.85,6.46 L10.00,6.12 L11.25,6.16 L12.46,6.61 L13.51,7.45 L14.28,8.61 L14.65,10.00 L14.57,11.48 L14.01,12.91 L13.00,14.14 L11.63,15.01 L10.00,15.42 L8.28,15.30 L6.63,14.63 L5.24,13.46 L4.26,11.87 L3.81,10.00 L3.97,8.04 L4.74,6.18 L6.09,4.62 L7.90,3.53 L10.00,3.04 L12.20,3.23 L14.27,4.12 L16.00,5.64 L17.21,7.66 L17.73,10.00 L17.50,12.44 L16.50,14.72 L14.82,16.63 L12.58,17.94 L10.00,18.50' stroke='%232A2A24' stroke-width='1.7' stroke-linecap='round' fill='none'/></svg>"
+    />
+    <script src="https://cdn.userway.org/widget.js" data-account="0WvC8qDpOY" data-position="3"></script>
+  </head>
+  <body>
+    <!-- Navbar is injected by navbar.js (shared across pages). -->
+    <div class="site-nav nav-sticky" id="site-nav"></div>
+    <script src="../js/navbar.js"></script>
+
+    <!-- Title -->
+    <div class="tinted-band trip-header">
+      <div class="trip-header-title">topographic map and compass navigation class</div>
+      <p class="trip-header-tagline">
+        come and learn how to situate yourself in relationship to the land using a topographic
+        map and compass
+      </p>
+    </div>
+
+    <!-- At a glance -->
+    <div class="trip-glance">
+      <div>
+        <div class="trip-glance-label">when</div>
+        <div class="trip-glance-value">September 25 &amp; October 17, 2026<br />9am&ndash;3pm</div>
+      </div>
+      <div>
+        <div class="trip-glance-label">where</div>
+        <div class="trip-glance-value">Marin Headlands</div>
+      </div>
+      <div>
+        <div class="trip-glance-label">cost</div>
+        <div class="trip-glance-value">$100</div>
+      </div>
+    </div>
+
+    <div class="trip-rule-wrap">
+      <div class="trip-rule"></div>
+    </div>
+
+    <!-- What -->
+    <div class="trip-what-wrap">
+      <div class="trip-what-row">
+        <div class="trip-what-text">
+          <p>
+            In this class we will use a map and compass to navigate through varied terrain,
+            learning how to use the features around us rather than just a trail.
+          </p>
+          <p>
+            We will become competent navigators by learning to situate ourselves to the cardinal
+            directions, to the magnetic field of the Earth, to the Sun, among the vegetation,
+            among the dips and valleys forged by water, to each other, and more.
+          </p>
+          <p>
+            We will spend less time following a trail and more time understanding how to map
+            ourselves in relation to the ridges, peaks and valleys.
+          </p>
+          <p>
+            This is a class for anyone who wants to become more competent at the technical skills
+            of reading a topographic map and compass while simultaneously connecting to the land.
+          </p>
+          <p>
+            To know where you are in space is to take further agency of your own body, life and
+            time on this planet. Know where you are.
+          </p>
+          <p>
+            If you feel called to this but cost is a barrier for you, please do not hesitate to
+            email <a href="mailto:WayWeWalk@proton.me">WayWeWalk@proton.me</a> directly to discuss
+            potential alternatives!
+          </p>
+        </div>
+        <div class="trip-what-photo">
+          <img src="../images/topo-map-compass.jpeg" alt="Topographic Map and Compass Navigation Class" />
+        </div>
+      </div>
+    </div>
+
+    <div class="trip-rule-wrap">
+      <div class="trip-rule"></div>
+    </div>
+
+    <!-- Sign up -->
+    <div class="section-contact" id="signup">
+      <div class="offerings-intro">
+        <div class="label-gold">sign up below</div>
+      </div>
+      <form
+        id="topoSignupForm"
+        name="topo-map-compass-signup"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thank-you.html"
+      >
+        <input type="hidden" name="form-name" value="topo-map-compass-signup" />
+        <p hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-field">
+          <label class="form-label" for="topo-name">name</label>
+          <input class="form-input" type="text" required name="name" id="topo-name" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="topo-age">age</label>
+          <input class="form-input" type="number" min="0" required name="age" id="topo-age" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="topo-email">email</label>
+          <input class="form-input" type="email" required name="email" id="topo-email" />
+        </div>
+        <div class="form-field">
+          <div class="form-label">which date are you signing up for?</div>
+          <div class="form-radio-group">
+            <label class="form-radio-option">
+              <input type="radio" name="date" value="September 25th" required />
+              <span>September 25th</span>
+            </label>
+            <label class="form-radio-option">
+              <input type="radio" name="date" value="October 17th" required />
+              <span>October 17th</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="topo-referral">how did you hear about this program?</label>
+          <input class="form-input" type="text" name="referral" id="topo-referral" />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="topo-why">why do you want to participate in this class?</label>
+          <textarea class="form-textarea" required name="why" id="topo-why" rows="4"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="topo-questions">any questions or something you'd like us to know?</label>
+          <textarea class="form-textarea" name="questions" id="topo-questions" rows="4"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-contact-submit">sign up</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

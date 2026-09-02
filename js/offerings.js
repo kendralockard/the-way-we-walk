@@ -16,6 +16,15 @@ var trips = [
     image: "images/mini-trip-for-kids-2.jpeg",
     page: "trips/mini-trip.html",
   },
+  {
+    name: "Topographic Map and Compass Navigation Class",
+    dates: "September 25 & October 17",
+    location: "Marin Headlands",
+    description:
+      "Come and learn how to situate yourself in relationship to the land using a topographic map and compass.",
+    image: "images/topo-map-compass.jpeg",
+    page: "trips/topographic-map-compass.html",
+  },
 ];
 
 (function () {
