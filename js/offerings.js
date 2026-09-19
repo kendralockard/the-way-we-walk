@@ -20,7 +20,7 @@ var trips = [
   },
   {
     name: "Topographic Map and Compass Navigation Class",
-    dates: "September 25 & October 17",
+    dates: "September 25 & October 16",
     location: "Marin Headlands",
     description:
       "Come and learn how to situate yourself in relationship to the land using a topographic map and compass.",
